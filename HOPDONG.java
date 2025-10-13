@@ -57,7 +57,7 @@ public class HOPDONG {
         this.mucLuong = mucLuong;
     }
 
-    public void hienThiThongTinHopDong() {
+    public void hienThiThongTin() {
         System.out.println("Mã hợp đồng: " + maHopDong);
         System.out.println("Loại hợp đồng: " + loaiHopDong);
         System.out.println("Ngày bắt đầu: " + ngayBatDau);
