@@ -1,5 +1,5 @@
-public class BANGLUONG {
-    private NHANSU nhanSu;
+public class BANGLUONG implements ITINHLUONG {
+    private String manhanSu;
     private String maBangLuong;
     private double luongCoBan;
     private double thuong;
@@ -10,9 +10,9 @@ public class BANGLUONG {
 
     }
 
-    public BANGLUONG(NHANSU nhanSu, String maBangLuong, double luongCoBan, double thuong, double luongThucNhan,
+    public BANGLUONG(String manhanSu, String maBangLuong, double luongCoBan, double thuong, double luongThucNhan,
             double baoHiem) {
-        this.nhanSu = nhanSu;
+        this.manhanSu = manhanSu;
         this.maBangLuong = maBangLuong;
         this.luongCoBan = luongCoBan;
         this.thuong = thuong;
@@ -20,12 +20,12 @@ public class BANGLUONG {
         this.baoHiem = baoHiem;
     }
 
-    public NHANSU getNhanSu() {
-        return nhanSu;
+    public String getManhanSu() {
+        return manhanSu;
     }
 
-    public void setNhanSu(NHANSU nhanSu) {
-        this.nhanSu = nhanSu;
+    public void setManhanSu(String manhanSu) {
+        this.manhanSu = manhanSu;
     }
 
     public String getMaBangLuong() {
@@ -68,18 +68,25 @@ public class BANGLUONG {
         this.baoHiem = baoHiem;
     }
 
-    public void tinhLuongThucNhan() {
-        luongThucNhan = luongCoBan + thuong - baoHiem;
+    @Override
+    public double tinhLuongThucNhan() {
+        return luongThucNhan;
+    }
+
+    public void tinhLuongThucNhan(int soNgayLam) {
+        double luongThang = (luongCoBan / 26) * soNgayLam;
+        luongThucNhan = luongThang + thuong - baoHiem;
     }
 
     public void hienThiThongTin() {
         System.out.println("Mã bảng lương: " + maBangLuong);
-        if (nhanSu != null) {
-            System.out.println("Thông tin nhân sự:");
-            nhanSu.hienThiThongTin();
-        } else {
-            System.out.println("Nhân sự: null");
-        }
+        // if (nhanSu != null) {
+        // System.out.println("Thông tin nhân sự:");
+        // nhanSu.hienThiThongTin();
+        // } else {
+        // System.out.println("Nhân sự: null");
+        // }
+        System.out.println("Nhân sự: " + manhanSu);
         System.out.println("Lương cơ bản: " + luongCoBan);
         System.out.println("Thưởng: " + thuong);
         System.out.println("Bảo hiểm: " + baoHiem);
