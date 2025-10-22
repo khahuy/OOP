@@ -1,4 +1,4 @@
-public abstract class NHANSU {
+public abstract class NHANSU implements ITINHLUONG {
     private String maNhanSu;
     private String hoTen;
     private String gioiTinh;
@@ -6,12 +6,15 @@ public abstract class NHANSU {
     private String soDienThoai;
     private String email;
     private String phongBan;
+    private double luongCoBan;
+    private double heSoLuong;
 
     public NHANSU() {
 
     }
 
-    public NHANSU(String maNhanSu, String hoTen, String gioiTinh, String diaChi, String soDienThoai, String email) {
+    public NHANSU(String maNhanSu, String hoTen, String gioiTinh, String diaChi, String soDienThoai, String email,
+            double heSoLuong) {
         this.maNhanSu = maNhanSu;
         this.hoTen = hoTen;
         this.gioiTinh = gioiTinh;
@@ -76,7 +79,30 @@ public abstract class NHANSU {
         this.phongBan = phongBan;
     }
 
+    public double getLuongCoBan() {
+        return luongCoBan;
+    }
+
+    public void setLuongCoBan(double luongCoBan) {
+        this.luongCoBan = luongCoBan;
+    }
+
+    public double getHeSoLuong() {
+        return heSoLuong;
+    }
+
+    public void setHeSoLuong(double heSoLuong) {
+        this.heSoLuong = heSoLuong;
+    }
+
     public abstract double tinhLuong();
+
+    public double tinhLuongThucNhan(int soNgayLam, double thuong) {
+        double luongThang = (luongCoBan / 26) * soNgayLam;
+        double luongThucNhan = luongThang + thuong;
+        // danhSachLuongThang.add(luongThucNhan);
+        return luongThucNhan;
+    }
 
     public abstract String getLoaiNhanSu();
 
@@ -88,5 +114,6 @@ public abstract class NHANSU {
         System.out.println("Số điện thoại: " + soDienThoai);
         System.out.println("Email: " + email);
         System.out.println("Phòng ban: " + phongBan);
+        System.out.println("Lương cơ bản: " + luongCoBan);
     }
 }

@@ -8,8 +8,8 @@ public class NHANVIENKYTHUAT extends NHANSU {
     }
 
     public NHANVIENKYTHUAT(String maNhanSu, String hoTen, String gioiTinh, String diaChi, String soDienThoai,
-            String email, double luongCoBan, double soGioLamThem, double donGiaGioLamThem) {
-        super(maNhanSu, hoTen, gioiTinh, diaChi, soDienThoai, email);
+            String email, double luongCoBan, double heSoLuong, double soGioLamThem, double donGiaGioLamThem) {
+        super(maNhanSu, hoTen, gioiTinh, diaChi, soDienThoai, email, heSoLuong);
         this.luongCoBan = luongCoBan;
         this.soGioLamThem = soGioLamThem;
         this.donGiaGioLamThem = donGiaGioLamThem;
@@ -41,7 +41,12 @@ public class NHANVIENKYTHUAT extends NHANSU {
 
     @Override
     public double tinhLuong() {
-        return luongCoBan + (soGioLamThem * donGiaGioLamThem);
+        return getLuongCoBan() * getHeSoLuong() + (soGioLamThem * donGiaGioLamThem);
+    }
+
+    @Override
+    public double tinhLuongThucNhan() {
+        return tinhLuong();
     }
 
     @Override

@@ -1,4 +1,5 @@
 public class DUAN {
+    public String maNhanSu;
     public String maDuAn;
     public String tenDuAn;
     public String ngayBatDau;
@@ -8,11 +9,20 @@ public class DUAN {
 
     }
 
-    public DUAN(String maDuAn, String tenDuAn, String ngayBatDau, String ngayKetThuc) {
+    public DUAN(String maNhanSu, String maDuAn, String tenDuAn, String ngayBatDau, String ngayKetThuc) {
+        this.maNhanSu = maNhanSu;
         this.maDuAn = maDuAn;
         this.tenDuAn = tenDuAn;
         this.ngayBatDau = ngayBatDau;
         this.ngayKetThuc = ngayKetThuc;
+    }
+
+    public String getMaNhanSu() {
+        return maNhanSu;
+    }
+
+    public void setMaNhanSu(String maNhanSu) {
+        this.maNhanSu = maNhanSu;
     }
 
     public String getMaDuAn() {
@@ -48,6 +58,7 @@ public class DUAN {
     }
 
     public void hienThiThongTin() {
+        System.out.println("Mã Nhân Sự: " + maNhanSu);
         System.out.println("Mã Dự Án: " + maDuAn);
         System.out.println("Tên Dự Án: " + tenDuAn);
         System.out.println("Ngày Bắt Đầu: " + ngayBatDau);
