@@ -1,4 +1,5 @@
-public interface ICHUCNANG {
+public interface ICHUCNANG 
+{
     void them();
 
     void sua();
