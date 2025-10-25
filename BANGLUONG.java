@@ -1,31 +1,31 @@
 public class BANGLUONG implements ITINHLUONG {
-    private String manhanSu;
+    private NHANSU nhanSu;
     private String maBangLuong;
-    private double luongCoBan;
-    private double thuong;
+    private THUONG thuong;
     private double luongThucNhan;
-    private double baoHiem;
+    private BAOHIEM baoHiem;
+    private CHAMCONG chamCong;
 
     public BANGLUONG() {
 
     }
 
-    public BANGLUONG(String manhanSu, String maBangLuong, double luongCoBan, double thuong, double luongThucNhan,
-            double baoHiem) {
-        this.manhanSu = manhanSu;
+    public BANGLUONG(NHANSU nhanSu, String maBangLuong, THUONG thuong, double luongThucNhan,
+            BAOHIEM baoHiem, CHAMCONG chamCong) {
+        this.nhanSu = nhanSu;
         this.maBangLuong = maBangLuong;
-        this.luongCoBan = luongCoBan;
         this.thuong = thuong;
         this.luongThucNhan = luongThucNhan;
         this.baoHiem = baoHiem;
+        this.chamCong = chamCong;
     }
 
-    public String getManhanSu() {
-        return manhanSu;
+    public NHANSU getNhanSu() {
+        return nhanSu;
     }
 
-    public void setManhanSu(String manhanSu) {
-        this.manhanSu = manhanSu;
+    public void setNhanSu(NHANSU nhanSu) {
+        this.nhanSu = nhanSu;
     }
 
     public String getMaBangLuong() {
@@ -36,19 +36,11 @@ public class BANGLUONG implements ITINHLUONG {
         this.maBangLuong = maBangLuong;
     }
 
-    public double getLuongCoBan() {
-        return luongCoBan;
-    }
-
-    public void setLuongCoBan(double luongCoBan) {
-        this.luongCoBan = luongCoBan;
-    }
-
     public double getThuong() {
-        return thuong;
+        return thuong.getSoTien();
     }
 
-    public void setThuong(double thuong) {
+    public void setThuong(THUONG thuong) {
         this.thuong = thuong;
     }
 
@@ -61,35 +53,38 @@ public class BANGLUONG implements ITINHLUONG {
     }
 
     public double getBaoHiem() {
-        return baoHiem;
+        return baoHiem.getPhiBaoHiem();
     }
 
-    public void setBaoHiem(double baoHiem) {
+    public void setBaoHiem(BAOHIEM baoHiem) {
         this.baoHiem = baoHiem;
+    }
+
+    public CHAMCONG getChamCong() {
+        return chamCong;
+    }
+
+    public void setChamCong(CHAMCONG chamCong) {
+        this.chamCong = chamCong;
     }
 
     @Override
     public double tinhLuongThucNhan() {
-        return luongThucNhan;
-    }
-
-    public void tinhLuongThucNhan(int soNgayLam) {
+        double luongCoBan = (nhanSu != null) ? nhanSu.tinhLuong() : 0.0;
+        double phiBaoHiem = (baoHiem != null) ? baoHiem.getPhiBaoHiem() : 0.0;
+        int soNgayLam = (chamCong != null) ? chamCong.getSoNgayLamViec() : 0;
+        double soTienThuong = (thuong != null) ? thuong.tinhThuong() : 0.0;
         double luongThang = (luongCoBan / 26) * soNgayLam;
-        luongThucNhan = luongThang + thuong - baoHiem;
+        luongThucNhan = luongThang + soTienThuong - phiBaoHiem;
+        return luongThucNhan;
     }
 
     public void hienThiThongTin() {
         System.out.println("Mã bảng lương: " + maBangLuong);
-        // if (nhanSu != null) {
-        // System.out.println("Thông tin nhân sự:");
-        // nhanSu.hienThiThongTin();
-        // } else {
-        // System.out.println("Nhân sự: null");
-        // }
-        System.out.println("Nhân sự: " + manhanSu);
-        System.out.println("Lương cơ bản: " + luongCoBan);
-        System.out.println("Thưởng: " + thuong);
-        System.out.println("Bảo hiểm: " + baoHiem);
+        System.out.println("Nhân sự: " + nhanSu.getMaNhanSu());
+        System.out.println("Lương cơ bản: " + nhanSu.getLuongCoBan());
+        System.out.println("Thưởng: " + (thuong != null ? thuong.getSoTien() : 0.0));
+        System.out.println("Bảo hiểm: " + baoHiem.getPhiBaoHiem());
         System.out.println("Lương thực nhận: " + luongThucNhan);
     }
 }

@@ -1,4 +1,4 @@
-public abstract class NHANSU implements ITINHLUONG {
+public abstract class NHANSU {
     private String maNhanSu;
     private String hoTen;
     private String gioiTinh;
@@ -14,13 +14,15 @@ public abstract class NHANSU implements ITINHLUONG {
     }
 
     public NHANSU(String maNhanSu, String hoTen, String gioiTinh, String diaChi, String soDienThoai, String email,
-            double heSoLuong) {
+            double luongCoBan, double heSoLuong) {
         this.maNhanSu = maNhanSu;
         this.hoTen = hoTen;
         this.gioiTinh = gioiTinh;
         this.diaChi = diaChi;
         this.soDienThoai = soDienThoai;
         this.email = email;
+        this.luongCoBan = luongCoBan;
+        this.heSoLuong = heSoLuong;
     }
 
     public String getMaNhanSu() {
@@ -96,13 +98,6 @@ public abstract class NHANSU implements ITINHLUONG {
     }
 
     public abstract double tinhLuong();
-
-    public double tinhLuongThucNhan(int soNgayLam, double thuong) {
-        double luongThang = (luongCoBan / 26) * soNgayLam;
-        double luongThucNhan = luongThang + thuong;
-        // danhSachLuongThang.add(luongThucNhan);
-        return luongThucNhan;
-    }
 
     public abstract String getLoaiNhanSu();
 

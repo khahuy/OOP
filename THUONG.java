@@ -37,4 +37,8 @@ public class THUONG {
         this.lyDo = lyDo;
     }
 
+    public double tinhThuong() {
+        return soTien;
+    }
+
 }

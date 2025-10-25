@@ -1,5 +1,4 @@
 public class NHANVIENQUANLY extends NHANSU {
-    private double luongCoBan;
     private double phuCap;
     private int soQuanLy;
 
@@ -9,8 +8,7 @@ public class NHANVIENQUANLY extends NHANSU {
 
     public NHANVIENQUANLY(String maNhanSu, String hoTen, String gioiTinh, String diaChi, String soDienThoai,
             String email, double luongCoBan, double heSoLuong, double phuCap, int soQuanLy) {
-        super(maNhanSu, hoTen, gioiTinh, diaChi, soDienThoai, email, heSoLuong);
-        this.luongCoBan = luongCoBan;
+        super(maNhanSu, hoTen, gioiTinh, diaChi, soDienThoai, email, luongCoBan, heSoLuong);
         this.phuCap = phuCap;
         this.soQuanLy = soQuanLy;
     }
@@ -31,23 +29,9 @@ public class NHANVIENQUANLY extends NHANSU {
         this.soQuanLy = soQuanLy;
     }
 
-    public double getLuongCoBan() {
-        return luongCoBan;
-    }
-
-    public void setLuongCoBan(double luongCoBan) {
-        this.luongCoBan = luongCoBan;
-    }
-
     @Override
     public double tinhLuong() {
-        double phuCap = 5000000;
-        return getLuongCoBan() * getHeSoLuong() + phuCap;
-    }
-
-    @Override
-    public double tinhLuongThucNhan() {
-        return tinhLuong();
+        return getLuongCoBan() * getHeSoLuong() + this.phuCap;
     }
 
     @Override
