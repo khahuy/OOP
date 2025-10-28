@@ -33,7 +33,7 @@ public class THUONG {
         return lyDo;
     }
 
-    public void setLyDo(String LyDo) {
+    public void setLyDo(String lyDo) {
         this.lyDo = lyDo;
     }
 
