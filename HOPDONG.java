@@ -4,6 +4,9 @@ public class HOPDONG {
     private String ngayBatDau;
     private String ngayKetThuc;
     private double mucLuong;
+    private NHANVIENHANHCHINH nhanvienhanhchinh;
+    private NHANVIENKYTHUAT nhanvienkythuat;
+    private NHANVIENQUANLY nhanvienquanly;
 
     public HOPDONG() {
 
@@ -57,12 +60,59 @@ public class HOPDONG {
         this.mucLuong = mucLuong;
     }
 
+    public NHANVIENHANHCHINH getNhanvienhanhchinh() {
+        return nhanvienhanhchinh;
+    }
+
+    public void setNhanvienhanhchinh(NHANVIENHANHCHINH nhanvienhanhchinh) {
+        this.nhanvienhanhchinh = nhanvienhanhchinh;
+        this.nhanvienkythuat = null;
+        this.nhanvienquanly = null;
+    }
+
+    public NHANVIENKYTHUAT getNhanvienkythuat() {
+        return nhanvienkythuat;
+    }
+
+    public void setNhanvienkythuat(NHANVIENKYTHUAT nhanvienkythuat) {
+        this.nhanvienkythuat = nhanvienkythuat;
+        this.nhanvienhanhchinh = null;
+        this.nhanvienquanly = null;
+    }
+
+    public NHANVIENQUANLY getNhanvienquanly() {
+        return nhanvienquanly;
+    }
+
+    public void setNhanvienquanly(NHANVIENQUANLY nhanvienquanly) {
+        this.nhanvienquanly = nhanvienquanly;
+        this.nhanvienhanhchinh = null;
+        this.nhanvienkythuat = null;
+    }
+
+    public NHANSU getNhanVien() {
+        if (nhanvienhanhchinh != null)
+            return nhanvienhanhchinh;
+        if (nhanvienkythuat != null)
+            return nhanvienkythuat;
+        if (nhanvienquanly != null)
+            return nhanvienquanly;
+        return null;
+    }
+
     public void hienThiThongTin() {
         System.out.println("Mã hợp đồng: " + maHopDong);
         System.out.println("Loại hợp đồng: " + loaiHopDong);
         System.out.println("Ngày bắt đầu: " + ngayBatDau);
         System.out.println("Ngày kết thúc: " + ngayKetThuc);
         System.out.println("Mức lương: " + mucLuong);
+
+        NHANSU nv = getNhanVien();
+        if (nv != null) {
+            System.out.println("Nhân viên: " + nv.getHoTen() + " (" + nv.getLoaiNhanSu() + ")");
+        } else {
+            System.out.println("Nhân viên: Chưa có");
+        }
     }
 
 }
