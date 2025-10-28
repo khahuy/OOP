@@ -1,28 +1,29 @@
 public class DUAN {
-    public String maNhanSu;
-    public String maDuAn;
-    public String tenDuAn;
-    public String ngayBatDau;
-    public String ngayKetThuc;
+    private NHANSU nhanSu;
+    private String maDuAn;
+    private String tenDuAn;
+    private String ngayBatDau;
+    private String ngayKetThuc;
+    private LICHLAMVIEC lichLamViec; // Liên kết 2 chiều với LICHLAMVIEC
 
     public DUAN() {
 
     }
 
-    public DUAN(String maNhanSu, String maDuAn, String tenDuAn, String ngayBatDau, String ngayKetThuc) {
-        this.maNhanSu = maNhanSu;
+    public DUAN(NHANSU nhanSu, String maDuAn, String tenDuAn, String ngayBatDau, String ngayKetThuc) {
+        this.nhanSu = nhanSu;
         this.maDuAn = maDuAn;
         this.tenDuAn = tenDuAn;
         this.ngayBatDau = ngayBatDau;
         this.ngayKetThuc = ngayKetThuc;
     }
 
-    public String getMaNhanSu() {
-        return maNhanSu;
+    public NHANSU getNhanSu() {
+        return nhanSu;
     }
 
-    public void setMaNhanSu(String maNhanSu) {
-        this.maNhanSu = maNhanSu;
+    public void setNhanSu(NHANSU nhanSu) {
+        this.nhanSu = nhanSu;
     }
 
     public String getMaDuAn() {
@@ -57,11 +58,27 @@ public class DUAN {
         this.ngayKetThuc = ngayKetThuc;
     }
 
+    public LICHLAMVIEC getLichLamViec() {
+        return lichLamViec;
+    }
+
+    public void setLichLamViec(LICHLAMVIEC lichLamViec) {
+        this.lichLamViec = lichLamViec;
+    }
+
     public void hienThiThongTin() {
-        System.out.println("Mã Nhân Sự: " + maNhanSu);
+        if (nhanSu != null) {
+            System.out.println("Mã Nhân Sự: " + nhanSu.getMaNhanSu());
+            System.out.println("Tên Nhân Sự: " + nhanSu.getHoTen());
+        } else {
+            System.out.println("Chưa có nhân viên");
+        }
         System.out.println("Mã Dự Án: " + maDuAn);
         System.out.println("Tên Dự Án: " + tenDuAn);
         System.out.println("Ngày Bắt Đầu: " + ngayBatDau);
         System.out.println("Ngày Kết Thúc: " + ngayKetThuc);
+        if (lichLamViec != null) {
+            System.out.println("Lịch làm việc: " + lichLamViec.getNgayLamViec() + " - " + lichLamViec.getCaLamViec());
+        }
     }
 }

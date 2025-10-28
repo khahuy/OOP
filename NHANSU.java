@@ -5,7 +5,7 @@ public abstract class NHANSU {
     private String diaChi;
     private String soDienThoai;
     private String email;
-    private String phongBan;
+    private PHONGBAN phongBan;
     private double luongCoBan;
     private double heSoLuong;
 
@@ -73,11 +73,11 @@ public abstract class NHANSU {
         this.email = email;
     }
 
-    public String getPhongBan() {
+    public PHONGBAN getPhongBan() {
         return phongBan;
     }
 
-    public void setPhongBan(String phongBan) {
+    public void setPhongBan(PHONGBAN phongBan) {
         this.phongBan = phongBan;
     }
 
@@ -108,7 +108,7 @@ public abstract class NHANSU {
         System.out.println("Địa chỉ: " + diaChi);
         System.out.println("Số điện thoại: " + soDienThoai);
         System.out.println("Email: " + email);
-        System.out.println("Phòng ban: " + phongBan);
+        System.out.println("Phòng ban: " + (phongBan != null ? phongBan.getTenPhongBan() : "Chưa phân công"));
         System.out.println("Lương cơ bản: " + luongCoBan);
     }
 }
