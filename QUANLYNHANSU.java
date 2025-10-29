@@ -27,53 +27,53 @@ public class QUANLYNHANSU implements ICHUCNANG, IFILE {
     @Override
     public void them() {
         if (soLuongNhanSu >= MAX_NHANSU) {
-            System.out.println("Danh sách nhân sự đã đầy!");
+            System.out.println("Danh sach nhan su da day!");
             return;
         }
 
-        System.out.println("\n=== THÊM NHÂN SỰ MỚI ===");
-        System.out.println("Chọn loại nhân sự:");
-        System.out.println("1. Nhân viên kỹ thuật");
-        System.out.println("2. Nhân viên hành chính");
-        System.out.println("3. Nhân viên quản lý");
-        System.out.print("Lựa chọn: ");
+        System.out.println("\n=== THEM NHAN SU MOI ===");
+        System.out.println("Chon loai nhan su:");
+        System.out.println("1. Nhan vien ky thuat");
+        System.out.println("2. Nhan vien hanh chinh");
+        System.out.println("3. Nhan vien quan ly");
+        System.out.print("Lua chon: ");
 
         int loai;
         try {
             loai = Integer.parseInt(sc.nextLine());
         } catch (NumberFormatException e) {
-            System.out.println("❌ Lỗi: Vui lòng nhập số!");
+            System.out.println("❌ Loi: Vui long nhap so!");
             return;
         }
 
-        System.out.print("Mã nhân sự: ");
+        System.out.print("Ma nhan su: ");
         String maNhanSu = sc.nextLine();
 
         // Kiểm tra trùng mã
         if (timKiemTheoMa(maNhanSu) != null) {
-            System.out.println("Mã nhân sự đã tồn tại!");
+            System.out.println("Ma nhan su đa ton tai!");
             return;
         }
 
-        System.out.print("Họ tên: ");
+        System.out.print("Ho ten: ");
         String hoTen = sc.nextLine();
-        System.out.print("Giới tính: ");
+        System.out.print("Gioi tinh: ");
         String gioiTinh = sc.nextLine();
-        System.out.print("Địa chỉ: ");
+        System.out.print("Dia chi: ");
         String diaChi = sc.nextLine();
-        System.out.print("Số điện thoại: ");
+        System.out.print("So dien thoai: ");
         String soDienThoai = sc.nextLine();
         System.out.print("Email: ");
         String email = sc.nextLine();
 
         double luongCoBan, heSoLuong;
         try {
-            System.out.print("Lương cơ bản: ");
+            System.out.print("Luong co ban: ");
             luongCoBan = Double.parseDouble(sc.nextLine());
-            System.out.print("Hệ số lương: ");
+            System.out.print("He so luong: ");
             heSoLuong = Double.parseDouble(sc.nextLine());
         } catch (NumberFormatException e) {
-            System.out.println("❌ Lỗi: Lương và hệ số phải là số!");
+            System.out.println("❌ Loi: Luong va he so phai la so!");
             return;
         }
 
@@ -82,9 +82,9 @@ public class QUANLYNHANSU implements ICHUCNANG, IFILE {
         try {
             switch (loai) {
                 case 1:
-                    System.out.print("Số giờ làm thêm: ");
+                    System.out.print("So gio lam them: ");
                     double soGioLamThem = Double.parseDouble(sc.nextLine());
-                    System.out.print("Đơn giá giờ làm thêm: ");
+                    System.out.print("Don gia gio lam them: ");
                     double donGiaGioLamThem = Double.parseDouble(sc.nextLine());
                     nhanSu = new NHANVIENKYTHUAT(maNhanSu, hoTen, gioiTinh, diaChi, soDienThoai, email, luongCoBan,
                             heSoLuong, soGioLamThem, donGiaGioLamThem);
@@ -94,94 +94,94 @@ public class QUANLYNHANSU implements ICHUCNANG, IFILE {
                             heSoLuong);
                     break;
                 case 3:
-                    System.out.print("Phụ cấp: ");
+                    System.out.print("Phu cap: ");
                     double phuCap = Double.parseDouble(sc.nextLine());
-                    System.out.print("Số lượng nhân viên quản lý: ");
+                    System.out.print("So luong nhan vien quan ly: ");
                     int soQuanLy = Integer.parseInt(sc.nextLine());
                     nhanSu = new NHANVIENQUANLY(maNhanSu, hoTen, gioiTinh, diaChi, soDienThoai, email, luongCoBan,
                             heSoLuong, phuCap, soQuanLy);
                     break;
                 default:
-                    System.out.println("Lựa chọn không hợp lệ!");
+                    System.out.println("Lua chon khong hop le!");
                     return;
             }
         } catch (NumberFormatException e) {
-            System.out.println("❌ Lỗi: Giá trị nhập vào không hợp lệ!");
+            System.out.println("❌ Loi: Gia tri nhap vao khong hop le!");
             return;
         }
 
         danhSachNhanSu[soLuongNhanSu] = nhanSu;
         soLuongNhanSu++;
-        System.out.println("✅ Thêm nhân sự thành công!");
+        System.out.println("✅ Them nhan su thanh cong!");
     }
 
     @Override
     public void sua() {
-        System.out.print("\nNhập mã nhân sú cần sửa: ");
+        System.out.print("\nNhap ma nhan su can sua: ");
         String maNhanSu = sc.nextLine();
 
         NHANSU nhanSu = timKiemTheoMa(maNhanSu);
         if (nhanSu == null) {
-            System.out.println("Không tìm thấy nhân sự!");
+            System.out.println("Khong tim thay nhan su!");
             return;
         }
 
-        System.out.println("\n=== SỬA THÔNG TIN NHÂN SỰ ===");
-        System.out.print("Họ tên mới (Enter để giữ nguyên): ");
+        System.out.println("\n=== SUA THONG TIN NHAN SU ===");
+        System.out.print("Ho ten moi (Enter de giu nguyen): ");
         String hoTen = sc.nextLine();
         if (!hoTen.isEmpty()) {
             nhanSu.setHoTen(hoTen);
         }
 
-        System.out.print("Giới tính mới (Enter để giữ nguyên): ");
+        System.out.print("Gioi tinh moi (Enter de giu nguyen): ");
         String gioiTinh = sc.nextLine();
         if (!gioiTinh.isEmpty()) {
             nhanSu.setGioiTinh(gioiTinh);
         }
 
-        System.out.print("Địa chỉ mới (Enter để giữ nguyên): ");
+        System.out.print("Dia chi moi (Enter de giu nguyen): ");
         String diaChi = sc.nextLine();
         if (!diaChi.isEmpty()) {
             nhanSu.setDiaChi(diaChi);
         }
 
-        System.out.print("Số điện thoại mới (Enter để giữ nguyên): ");
+        System.out.print("So dien thoai moi (Enter de giu nguyen): ");
         String soDienThoai = sc.nextLine();
         if (!soDienThoai.isEmpty()) {
             nhanSu.setSoDienThoai(soDienThoai);
         }
 
-        System.out.print("Email mới (Enter để giữ nguyên): ");
+        System.out.print("Email moi (Enter de giu nguyen): ");
         String email = sc.nextLine();
         if (!email.isEmpty()) {
             nhanSu.setEmail(email);
         }
 
         try {
-            System.out.print("Lương cơ bản mới (Enter để giữ nguyên): ");
+            System.out.print("Luong co ban moi (Enter de giu nguyen): ");
             String luongStr = sc.nextLine();
             if (!luongStr.isEmpty()) {
                 double luongCoBan = Double.parseDouble(luongStr);
                 nhanSu.setLuongCoBan(luongCoBan);
             }
 
-            System.out.print("Hệ số lương mới (Enter để giữ nguyên): ");
+            System.out.print("He so luong moi (Enter de giu nguyen): ");
             String heSoStr = sc.nextLine();
             if (!heSoStr.isEmpty()) {
                 double heSoLuong = Double.parseDouble(heSoStr);
                 nhanSu.setHeSoLuong(heSoLuong);
             }
         } catch (NumberFormatException e) {
-            System.out.println("❌ Lỗi: Giá trị không hợp lệ!");
+            System.out.println("❌ Loi: Gia tri khong hop le!");
             return;
         }
 
-        System.out.println("✅ Cập nhật thông tin thành công!");
+        System.out.println("✅ Cap nhat thong tin thanh cong!");
     }
 
     @Override
     public void xoa() {
-        System.out.print("\nNhập mã nhân sự cần xóa: ");
+        System.out.print("\nNhap ma nhan su can xoa: ");
         String maNhanSu = sc.nextLine();
 
         int viTri = -1;
@@ -193,14 +193,14 @@ public class QUANLYNHANSU implements ICHUCNANG, IFILE {
         }
 
         if (viTri == -1) {
-            System.out.println("Không tìm thấy nhân sự!");
+            System.out.println("Khong tim thay nhan su!");
             return;
         }
 
-        System.out.print("Bạn có chắc chắn muốn xóa? (Y/N): ");
+        System.out.print("Ban co chac chan muon xoa? (Y/N): ");
         String xacNhan = sc.nextLine();
         if (!xacNhan.equalsIgnoreCase("Y")) {
-            System.out.println("Đã hủy thao tác xóa!");
+            System.out.println("Da huy thao tac xoa!");
             return;
         }
 
@@ -211,42 +211,42 @@ public class QUANLYNHANSU implements ICHUCNANG, IFILE {
         danhSachNhanSu[soLuongNhanSu - 1] = null;
         soLuongNhanSu--;
 
-        System.out.println("Xóa nhân sự thành công!");
+        System.out.println("Xoa nhan su thanh cong!");
     }
 
     @Override
     public void hienThi() {
         if (soLuongNhanSu == 0) {
-            System.out.println("\nDanh sách nhân sự trống!");
+            System.out.println("\nDanh sach nhan su trong!");
             return;
         }
 
-        System.out.println("\n=== DANH SÁCH NHÂN SỰ ===");
-        System.out.println("Tổng số: " + soLuongNhanSu + " nhân sự");
+        System.out.println("\n=== DANH SACH NHAN SU ===");
+        System.out.println("Tong so: " + soLuongNhanSu + " nhan su");
         System.out.println("----------------------------------------");
 
         for (int i = 0; i < soLuongNhanSu; i++) {
-            System.out.println("\nNhân sự " + (i + 1) + ":");
+            System.out.println("\nNhan su " + (i + 1) + ":");
             danhSachNhanSu[i].hienThiThongTin();
-            System.out.println("Loại nhân sự: " + danhSachNhanSu[i].getLoaiNhanSu());
-            System.out.println("Lương: " + danhSachNhanSu[i].tinhLuong());
+            System.out.println("Loai nhan su: " + danhSachNhanSu[i].getLoaiNhanSu());
+            System.out.println("Luong: " + danhSachNhanSu[i].tinhLuong());
             System.out.println("----------------------------------------");
         }
     }
 
     @Override
     public void timKiem() {
-        System.out.println("\n=== TÌM KIẾM NHÂN SỰ ===");
-        System.out.println("1. Tìm theo mã nhân sự");
-        System.out.println("2. Tìm theo tên");
-        System.out.println("3. Tìm theo loại nhân sự");
-        System.out.print("Lựa chọn: ");
+        System.out.println("\n=== TIM KIEM NHAN SU ===");
+        System.out.println("1. Tim theo ma nhan su");
+        System.out.println("2. Tim theo ten");
+        System.out.println("3. Tim theo loai nhan su");
+        System.out.print("Lua chon: ");
 
         int luaChon;
         try {
             luaChon = Integer.parseInt(sc.nextLine());
         } catch (NumberFormatException e) {
-            System.out.println("❌ Lỗi: Vui lòng nhập số!");
+            System.out.println("❌ Loi: Vui long nhap so!");
             return;
         }
 
@@ -261,7 +261,7 @@ public class QUANLYNHANSU implements ICHUCNANG, IFILE {
                 timKiemTheoLoai();
                 break;
             default:
-                System.out.println("Lựa chọn không hợp lệ!");
+                System.out.println("Lua chon khong hop le!");
         }
     }
 
@@ -277,87 +277,87 @@ public class QUANLYNHANSU implements ICHUCNANG, IFILE {
 
     // Tìm kiếm theo mã nhân sự (hiển thị)
     private void timKiemTheoMaNS() {
-        System.out.print("Nhập mã nhân sự: ");
+        System.out.print("Nhap ma nhan su: ");
         String maNhanSu = sc.nextLine();
 
         NHANSU nhanSu = timKiemTheoMa(maNhanSu);
         if (nhanSu != null) {
-            System.out.println("\nThông tin nhân sự:");
+            System.out.println("\nThong tin nhan su:");
             nhanSu.hienThiThongTin();
-            System.out.println("Loại nhân sự: " + nhanSu.getLoaiNhanSu());
-            System.out.println("Lương: " + nhanSu.tinhLuong());
+            System.out.println("Loai nhan su: " + nhanSu.getLoaiNhanSu());
+            System.out.println("Luong: " + nhanSu.tinhLuong());
         } else {
-            System.out.println("Không tìm thấy nhân sự!");
+            System.out.println("Khong tim thay nhan su!");
         }
     }
 
     // Tìm kiếm theo tên
     private void timKiemTheoTen() {
-        System.out.print("Nhập tên cần tìm: ");
+        System.out.print("Nhap ten can tim: ");
         String ten = sc.nextLine();
 
         boolean timThay = false;
-        System.out.println("\nKết quả tìm kiếm:");
+        System.out.println("\nKet qua tim kiem:");
 
         for (int i = 0; i < soLuongNhanSu; i++) {
             if (danhSachNhanSu[i].getHoTen().toLowerCase().contains(ten.toLowerCase())) {
-                System.out.println("\nNhân sự " + (i + 1) + ":");
+                System.out.println("\nNhan su " + (i + 1) + ":");
                 danhSachNhanSu[i].hienThiThongTin();
-                System.out.println("Loại nhân sự: " + danhSachNhanSu[i].getLoaiNhanSu());
+                System.out.println("Loai nhan su: " + danhSachNhanSu[i].getLoaiNhanSu());
                 timThay = true;
             }
         }
 
         if (!timThay) {
-            System.out.println("Không tìm thấy nhân sự nào!");
+            System.out.println("Khong tim thay nhan su nao!");
         }
     }
 
     // Tìm kiếm theo loại nhân sự
     private void timKiemTheoLoai() {
-        System.out.println("Chọn loại nhân sự:");
-        System.out.println("1. Nhân viên kỹ thuật");
-        System.out.println("2. Nhân viên hành chính");
-        System.out.println("3. Nhân viên quản lý");
-        System.out.print("Lựa chọn: ");
+        System.out.println("Chon loai nhan su:");
+        System.out.println("1. Nhan vien ky thuat");
+        System.out.println("2. Nhan vien hanh chinh");
+        System.out.println("3. Nhan vien quan ly");
+        System.out.print("Lua chon: ");
 
         int loai;
         try {
             loai = Integer.parseInt(sc.nextLine());
         } catch (NumberFormatException e) {
-            System.out.println("❌ Lỗi: Vui lòng nhập số!");
+            System.out.println("❌ Loi: Vui long nhap so!");
             return;
         }
 
         String loaiNhanSu = "";
         switch (loai) {
             case 1:
-                loaiNhanSu = "Kỹ Thuật";
+                loaiNhanSu = "Ky Thuat";
                 break;
             case 2:
-                loaiNhanSu = "Hành Chính";
+                loaiNhanSu = "Hanh Chinh";
                 break;
             case 3:
-                loaiNhanSu = "Quản Lý";
+                loaiNhanSu = "Quan Ly";
                 break;
             default:
-                System.out.println("Lựa chọn không hợp lệ!");
+                System.out.println("Lua chon khong hop le!");
                 return;
         }
 
         boolean timThay = false;
-        System.out.println("\nDanh sách " + loaiNhanSu + ":");
+        System.out.println("\nDanh sach " + loaiNhanSu + ":");
 
         for (int i = 0; i < soLuongNhanSu; i++) {
             if (danhSachNhanSu[i].getLoaiNhanSu().equals(loaiNhanSu)) {
-                System.out.println("\nNhân sự " + (i + 1) + ":");
+                System.out.println("\nNhan su " + (i + 1) + ":");
                 danhSachNhanSu[i].hienThiThongTin();
                 timThay = true;
             }
         }
 
         if (!timThay) {
-            System.out.println("Không tìm thấy nhân sự nào!");
+            System.out.println("Khong tim thay nhan su nao!");
         }
     }
 
@@ -367,29 +367,29 @@ public class QUANLYNHANSU implements ICHUCNANG, IFILE {
             FileWriter fw = new FileWriter("danhsachnhansu.txt");
             BufferedWriter bw = new BufferedWriter(fw);
 
-            bw.write("Tổng số nhân sự: " + soLuongNhanSu + "\n");
+            bw.write("Tong so nhan su: " + soLuongNhanSu + "\n");
             bw.write("========================================\n");
 
             for (int i = 0; i < soLuongNhanSu; i++) {
                 NHANSU ns = danhSachNhanSu[i];
-                bw.write("Mã: " + ns.getMaNhanSu() + "\n");
-                bw.write("Họ tên: " + ns.getHoTen() + "\n");
-                bw.write("Giới tính: " + ns.getGioiTinh() + "\n");
-                bw.write("Địa chỉ: " + ns.getDiaChi() + "\n");
-                bw.write("SĐT: " + ns.getSoDienThoai() + "\n");
+                bw.write("Ma: " + ns.getMaNhanSu() + "\n");
+                bw.write("Ho ten: " + ns.getHoTen() + "\n");
+                bw.write("Gioi tinh: " + ns.getGioiTinh() + "\n");
+                bw.write("Dia chi: " + ns.getDiaChi() + "\n");
+                bw.write("SDT: " + ns.getSoDienThoai() + "\n");
                 bw.write("Email: " + ns.getEmail() + "\n");
-                bw.write("Lương cơ bản: " + ns.getLuongCoBan() + "\n");
-                bw.write("Hệ số lương: " + ns.getHeSoLuong() + "\n");
-                bw.write("Loại: " + ns.getLoaiNhanSu() + "\n");
-                bw.write("Lương: " + ns.tinhLuong() + "\n");
+                bw.write("Luong co ban: " + ns.getLuongCoBan() + "\n");
+                bw.write("He so luong: " + ns.getHeSoLuong() + "\n");
+                bw.write("Loai: " + ns.getLoaiNhanSu() + "\n");
+                bw.write("Luong: " + ns.tinhLuong() + "\n");
                 bw.write("----------------------------------------\n");
             }
 
             bw.close();
             fw.close();
-            System.out.println("Ghi file thành công!");
+            System.out.println("Ghi file thanh cong!");
         } catch (IOException e) {
-            System.out.println("Lỗi ghi file: " + e.getMessage());
+            System.out.println("Loi ghi file: " + e.getMessage());
         }
     }
 
@@ -400,7 +400,7 @@ public class QUANLYNHANSU implements ICHUCNANG, IFILE {
             BufferedReader br = new BufferedReader(fr);
 
             String line;
-            System.out.println("\n=== NỘI DUNG FILE ===");
+            System.out.println("\n=== NOI DUNG FILE ===");
             while ((line = br.readLine()) != null) {
                 System.out.println(line);
             }
@@ -408,32 +408,32 @@ public class QUANLYNHANSU implements ICHUCNANG, IFILE {
             br.close();
             fr.close();
         } catch (FileNotFoundException e) {
-            System.out.println("Không tìm thấy file!");
+            System.out.println("Khong tim thay file!");
         } catch (IOException e) {
-            System.out.println("Lỗi đọc file: " + e.getMessage());
+            System.out.println("Loi doc file: " + e.getMessage());
         }
     }
 
-    // Thống kê số lượng nhân sự theo loại
+    // Thong ke so luong nhan su theo loai
     public void thongKe() {
         int soKyThuat = 0, soHanhChinh = 0, soQuanLy = 0;
 
         for (int i = 0; i < soLuongNhanSu; i++) {
             String loai = danhSachNhanSu[i].getLoaiNhanSu();
-            if (loai.equals("Nhân viên kỹ thuật")) {
+            if (loai.equals("Nhan vien ky thuat")) {
                 soKyThuat++;
-            } else if (loai.equals("Nhân viên hành chính")) {
+            } else if (loai.equals("Nhan vien hanh chinh")) {
                 soHanhChinh++;
-            } else if (loai.equals("Nhân viên quản lý")) {
+            } else if (loai.equals("Nhan vien quan ly")) {
                 soQuanLy++;
             }
         }
 
-        System.out.println("\n=== THỐNG KÊ NHÂN SỰ ===");
-        System.out.println("Tổng số nhân sự: " + soLuongNhanSu);
-        System.out.println("Nhân viên kỹ thuật: " + soKyThuat);
-        System.out.println("Nhân viên hành chính: " + soHanhChinh);
-        System.out.println("Nhân viên quản lý: " + soQuanLy);
+        System.out.println("\n=== THONG KE NHAN SU ===");
+        System.out.println("Tong so nhan su: " + soLuongNhanSu);
+        System.out.println("Nhan vien ky thuat: " + soKyThuat);
+        System.out.println("Nhan vien hanh chinh: " + soHanhChinh);
+        System.out.println("Nhan vien quan ly: " + soQuanLy);
     }
 
     // Sắp xếp theo lương
@@ -447,7 +447,7 @@ public class QUANLYNHANSU implements ICHUCNANG, IFILE {
                 }
             }
         }
-        System.out.println("Đã sắp xếp theo lương tăng dần!");
+        System.out.println("Da sap xep theo luong tang dan!");
     }
 
 }

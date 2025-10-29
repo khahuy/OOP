@@ -8,31 +8,31 @@ public class MAIN {
         int luaChon;
 
         System.out.println("╔═══════════════════════════════════════════════╗");
-        System.out.println("║   CHÀO MỪNG ĐÉN HỆ THỐNG QUẢN LÝ NHÂN SỰ    ║");
+        System.out.println("║   CHAO MUNG DEN HE THONG QUAN LY NHAN SU    ║");
         System.out.println("╚═══════════════════════════════════════════════╝\n");
 
         do {
             System.out.println("\n╔════════════════════════════════════════════╗");
-            System.out.println("║        HỆ THỐNG QUẢN LÝ NHÂN SỰ           ║");
+            System.out.println("║        HE THONG QUAN LY NHAN SU           ║");
             System.out.println("╠════════════════════════════════════════════╣");
-            System.out.println("║  1. Thêm nhân sự mới                       ║");
-            System.out.println("║  2. Sửa thông tin nhân sự                  ║");
-            System.out.println("║  3. Xóa nhân sự                            ║");
-            System.out.println("║  4. Hiển thị danh sách nhân sự             ║");
-            System.out.println("║  5. Tìm kiếm nhân sự                       ║");
-            System.out.println("║  6. Thống kê nhân sự                       ║");
-            System.out.println("║  7. Sắp xếp theo lương                     ║");
-            System.out.println("║  8. Ghi danh sách ra file                  ║");
-            System.out.println("║  9. Đọc file danh sách                     ║");
-            System.out.println("║  0. Thoát chương trình                     ║");
+            System.out.println("║  1. Them nhan su moi                       ║");
+            System.out.println("║  2. Sua thong tin nhan su                  ║");
+            System.out.println("║  3. Xoa nhan su                            ║");
+            System.out.println("║  4. Hien thi danh sach nhan su             ║");
+            System.out.println("║  5. Tim kiem nhan su                       ║");
+            System.out.println("║  6. Thong ke nhan su                       ║");
+            System.out.println("║  7. Sap xep theo luong                     ║");
+            System.out.println("║  8. Ghi danh sach ra file                  ║");
+            System.out.println("║  9. Doc file danh sach                     ║");
+            System.out.println("║  0. Thoat chuong trinh                     ║");
             System.out.println("╚════════════════════════════════════════════╝");
-            System.out.print("👉 Nhập lựa chọn của bạn: ");
+            System.out.print("Nhap lua chon cua ban: ");
 
             try {
                 luaChon = sc.nextInt();
                 sc.nextLine(); // Clear buffer
             } catch (Exception e) {
-                System.out.println("❌ Lỗi: Vui lòng nhập số!");
+                System.out.println("Loi: Vui long nhap so!");
                 sc.nextLine(); // Clear invalid input
                 luaChon = -1;
                 continue;
@@ -59,7 +59,7 @@ public class MAIN {
                     break;
                 case 7:
                     qlns.sapXepTheoLuong();
-                    System.out.println("\n📊 Hiển thị danh sách sau khi sắp xếp:");
+                    System.out.println("\nHien thi danh sach sau khi sap xep:");
                     qlns.hienThi();
                     break;
                 case 8:
@@ -70,17 +70,17 @@ public class MAIN {
                     break;
                 case 0:
                     System.out.println("\n╔═══════════════════════════════════════════════╗");
-                    System.out.println("║  CảM ƠN BẠN ĐÃ SỬ DỤNG CHƯƠNG TRÌNH!        ║");
+                    System.out.println("║  CAM ON BAN DA SU DUNG CHUONG TRINH!        ║");
                     System.out.println("║           HẸN GẶP LẠI!                        ║");
                     System.out.println("╚═══════════════════════════════════════════════╝");
                     break;
                 default:
-                    System.out.println("❌ Lựa chọn không hợp lệ! Vui lòng chọn từ 0-9.");
+                    System.out.println("Lua chon khong hop le! Vui long chon tu 0-9.");
             }
 
             // Tạm dừng để người dùng đọc kết quả
             if (luaChon != 0 && luaChon >= 1 && luaChon <= 9) {
-                System.out.println("\n⏸️  Nhấn Enter để tiếp tục...");
+                System.out.println("\nNhan Enter de tiep tuc...");
                 try {
                     sc.nextLine();
                 } catch (Exception e) {
