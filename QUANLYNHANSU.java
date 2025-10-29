@@ -60,7 +60,7 @@ public class QUANLYNHANSU implements ICHUCNANG, IFILE {
         String gioiTinh;
         do {
             System.out.print("Gioi tinh (Nam/Nu):");
-            gioiTinh = sc.nextLine();
+            gioiTinh = sc.nextLine().trim().toLowerCase();
             if (!gioiTinh.equals("nam") && !gioiTinh.equals("nu")) {
                 System.out.println(" Loi: Vui long nhap gioi tinh hop le (Nam/Nu)!");
             }
@@ -153,7 +153,7 @@ public class QUANLYNHANSU implements ICHUCNANG, IFILE {
         System.out.print("Gioi tinh moi (Nam/Nu) (Enter de giu nguyen): ");
         String gioiTinh;
         do {
-            gioiTinh = sc.nextLine();
+            gioiTinh = sc.nextLine().trim().toLowerCase();
             if (!gioiTinh.equals("nam") && !gioiTinh.equals("nu")) {
                 System.out.println(" Loi: Vui long nhap gioi tinh hop le (Nam/Nu)!");
             }
@@ -253,7 +253,7 @@ public class QUANLYNHANSU implements ICHUCNANG, IFILE {
             System.out.println("\nNhan su " + (i + 1) + ":");
             danhSachNhanSu[i].hienThiThongTin();
             System.out.println("Loai nhan su: " + danhSachNhanSu[i].getLoaiNhanSu());
-            System.out.printf("Luong: %.2f", danhSachNhanSu[i].tinhLuong());
+            System.out.printf("Luong: %.2f\n", danhSachNhanSu[i].tinhLuong());
             System.out.println("----------------------------------------");
         }
     }
@@ -498,7 +498,7 @@ public class QUANLYNHANSU implements ICHUCNANG, IFILE {
             System.out.println("\n--- Nhap nhan su thu " + (i + 1) + " ---");
             them();
         }
-        System.out.println("Hoan tat nhap " + n + " nhan su (hoac dung som neu danh sach day).\n");
+        System.out.println("Hoan tat nhap " + n + " nhan su\n");
     }
 
 }
