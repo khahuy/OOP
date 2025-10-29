@@ -1,0 +1,68 @@
+Tổng số nhân sự: 6
+========================================
+Mã: NV001
+Họ tên: Nguyễn Văn A
+Giới tính: Nam
+Địa chỉ: Hà Nội
+SĐT: 0123456789
+Email: nva@company.com
+Lương cơ bản: 5000000.0
+Hệ số lương: 2.5
+Loại: Kỹ Thuật
+Lương: 1.65E7
+----------------------------------------
+Mã: NV002
+Họ tên: Trần Thị B
+Giới tính: Nữ
+Địa chỉ: Hà Nội
+SĐT: 0987654321
+Email: ttb@company.com
+Lương cơ bản: 6000000.0
+Hệ số lương: 3.0
+Loại: Kỹ Thuật
+Lương: 2.175E7
+----------------------------------------
+Mã: NV003
+Họ tên: Lê Văn C
+Giới tính: Nam
+Địa chỉ: TP HCM
+SĐT: 0912345678
+Email: lvc@company.com
+Lương cơ bản: 4500000.0
+Hệ số lương: 2.0
+Loại: Hành Chính
+Lương: 9000000.0
+----------------------------------------
+Mã: NV004
+Họ tên: Phạm Thị D
+Giới tính: Nữ
+Địa chỉ: Đà Nẵng
+SĐT: 0934567890
+Email: ptd@company.com
+Lương cơ bản: 4000000.0
+Hệ số lương: 1.8
+Loại: Hành Chính
+Lương: 7200000.0
+----------------------------------------
+Mã: NV005
+Họ tên: Hoàng Văn E
+Giới tính: Nam
+Địa chỉ: Hà Nội
+SĐT: 0945678901
+Email: hve@company.com
+Lương cơ bản: 8000000.0
+Hệ số lương: 4.0
+Loại: Quản Lý
+Lương: 3.7E7
+----------------------------------------
+Mã: NV006
+Họ tên: Vũ Thị F
+Giới tính: Nữ
+Địa chỉ: TP HCM
+SĐT: 0956789012
+Email: vtf@company.com
+Lương cơ bản: 7500000.0
+Hệ số lương: 3.5
+Loại: Quản Lý
+Lương: 3.025E7
+----------------------------------------
