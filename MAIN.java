@@ -73,10 +73,10 @@ public class MAIN {
                     qlns.themNhieu();
                     break;
                 case 0:
-                    System.out.println("\n╔═══════════════════════════════════════════════╗");
-                    System.out.println("  ║  CAM ON BAN DA SU DUNG CHUONG TRINH!          ║");
-                    System.out.println("  ║           HẸN GẶP LẠI!                        ║");
-                    System.out.println("  ╚═══════════════════════════════════════════════╝");
+                    System.out.println("╔═══════════════════════════════════════════════╗");
+                    System.out.println("║  CAM ON BAN DA SU DUNG CHUONG TRINH!          ║");
+                    System.out.println("║           HEN GAP LAI!                        ║");
+                    System.out.println("╚═══════════════════════════════════════════════╝");
                     break;
                 default:
                     System.out.println("Lua chon khong hop le! Vui long chon tu 0-9.");
