@@ -446,7 +446,7 @@ public class QUANLYNHANSU implements ICHUCNANG, IFILE {
             String loai = danhSachNhanSu[i].getLoaiNhanSu();
             if (loai.equals("Ky Thuat")) {
                 soKyThuat++;
-            } else if (loai.equals("HHanh Chinh")) {
+            } else if (loai.equals("Hanh Chinh")) {
                 soHanhChinh++;
             } else if (loai.equals("Quan Ly")) {
                 soQuanLy++;
