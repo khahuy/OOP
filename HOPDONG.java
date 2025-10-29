@@ -101,17 +101,17 @@ public class HOPDONG {
     }
 
     public void hienThiThongTin() {
-        System.out.println("Mã hợp đồng: " + maHopDong);
-        System.out.println("Loại hợp đồng: " + loaiHopDong);
-        System.out.println("Ngày bắt đầu: " + ngayBatDau);
-        System.out.println("Ngày kết thúc: " + ngayKetThuc);
-        System.out.println("Mức lương: " + mucLuong);
+        System.out.println("Ma hop đong: " + maHopDong);
+        System.out.println("Loai hop đong: " + loaiHopDong);
+        System.out.println("Ngay bat đau: " + ngayBatDau);
+        System.out.println("Ngay ket thuc: " + ngayKetThuc);
+        System.out.println("Muc luong: " + mucLuong);
 
         NHANSU nv = getNhanVien();
         if (nv != null) {
-            System.out.println("Nhân viên: " + nv.getHoTen() + " (" + nv.getLoaiNhanSu() + ")");
+            System.out.println("Nhan vien: " + nv.getHoTen() + " (" + nv.getLoaiNhanSu() + ")");
         } else {
-            System.out.println("Nhân viên: Chưa có");
+            System.out.println("Nhan vien: Chua co");
         }
     }
 

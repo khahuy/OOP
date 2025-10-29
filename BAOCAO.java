@@ -71,24 +71,24 @@ public class BAOCAO {
         this.kyLuat = kyLuat;
         if (kyLuat != null) {
             NHANSU nv = kyLuat.getNhanVienBiKyLuat();
-            this.noiDung = "Báo cáo kỷ luật nhân viên\n" +
-                    "Nhân viên: " + (nv != null ? nv.getHoTen() : "N/A") + "\n" +
-                    "Hình thức: " + kyLuat.getHinhThuc() + "\n" +
-                    "Lý do: " + kyLuat.getLyDo() + "\n" +
-                    "Ngày kỷ luật: " + kyLuat.getNgayKyLuat();
+            this.noiDung = "Bao cao ky luat nhan vien\n" +
+                    "Nhan vien: " + (nv != null ? nv.getHoTen() : "N/A") + "\n" +
+                    "Hinh thuc: " + kyLuat.getHinhThuc() + "\n" +
+                    "Ly do: " + kyLuat.getLyDo() + "\n" +
+                    "Ngay ky luat: " + kyLuat.getNgayKyLuat();
         }
     }
 
     public void hienThiThongTin() {
-        System.out.println("Mã báo cáo: " + maBaoCao);
-        System.out.println("Loại báo cáo: " + loaiBaoCao);
-        System.out.println("Nội dung: " + noiDung);
-        System.out.println("Ngày lập: " + ngayLap);
+        System.out.println("Ma bao cao: " + maBaoCao);
+        System.out.println("Loai bao cao: " + loaiBaoCao);
+        System.out.println("NNoi dung: " + noiDung);
+        System.out.println("Ngay lap: " + ngayLap);
         if (nhanVienQuanLy != null) {
-            System.out.println("Người lập: " + nhanVienQuanLy.getHoTen() + " (Quản lý)");
+            System.out.println("Nguoi lap: " + nhanVienQuanLy.getHoTen() + " (Quan ly)");
         }
         if (kyLuat != null) {
-            System.out.println("Liên quan kỷ luật: " + kyLuat.getHinhThuc());
+            System.out.println("Lien quan ky luat: " + kyLuat.getHinhThuc());
         }
     }
 

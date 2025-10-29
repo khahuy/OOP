@@ -48,11 +48,11 @@ public class LICHLAMVIEC {
     }
 
     public void hienThiThongTin() {
-        System.out.println("Mã lịch: " + maLich);
-        System.out.println("Ngày làm việc: " + ngayLamViec);
-        System.out.println("Ca làm việc: " + caLamViec);
+        System.out.println("Ma lich: " + maLich);
+        System.out.println("Ngay lam viec: " + ngayLamViec);
+        System.out.println("Ca lam viec: " + caLamViec);
         if (duAn != null) {
-            System.out.println("Dự án: " + duAn.getTenDuAn());
+            System.out.println("Du an: " + duAn.getTenDuAn());
         }
     }
 

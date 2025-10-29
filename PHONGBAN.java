@@ -38,9 +38,9 @@ public class PHONGBAN {
     }
 
     public void hienThiThongTinPhongBan() {
-        System.out.println("Mã phòng ban: " + maPhongBan);
-        System.out.println("Tên phòng ban: " + tenPhongBan);
-        System.out.println("Số nhân viên: " + soNhanVien);
+        System.out.println("Ma phong ban: " + maPhongBan);
+        System.out.println("Ten phong ban: " + tenPhongBan);
+        System.out.println("So nhan vien: " + soNhanVien);
     }
 
 }

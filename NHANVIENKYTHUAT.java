@@ -36,7 +36,7 @@ public class NHANVIENKYTHUAT extends NHANSU {
 
     @Override
     public String getLoaiNhanSu() {
-        return "Kỹ Thuật";
+        return "Ky Thuat";
     }
 
 }

@@ -63,18 +63,18 @@ public class KYLUAT {
     }
 
     public void hienThiThongTin() {
-        System.out.println("Hình thức kỷ luật: " + hinhThuc);
-        System.out.println("Lý do: " + lyDo);
-        System.out.println("Ngày kỷ luật: " + ngayKyLuat);
+        System.out.println("Hinh thuc ky luat: " + hinhThuc);
+        System.out.println("Ly do: " + lyDo);
+        System.out.println("Ngay ky luat: " + ngayKyLuat);
 
         // Hiển thị nhân viên bị kỷ luật
         if (nhanSu != null) {
-            System.out.println("Nhân viên bị kỷ luật: " + nhanSu.getHoTen() + " (" + nhanSu.getLoaiNhanSu() + ")");
+            System.out.println("Nhan vien bi ky luat: " + nhanSu.getHoTen() + " (" + nhanSu.getLoaiNhanSu() + ")");
         }
 
         if (baoCao != null) {
-            System.out.println("Liên quan báo cáo: " + baoCao.getMaBaoCao());
-            System.out.println("Người lập báo cáo: " + baoCao.getNhanVienQuanLy().getHoTen());
+            System.out.println("Lien quan bao cao: " + baoCao.getMaBaoCao());
+            System.out.println("Nguoi lap bao cao: " + baoCao.getNhanVienQuanLy().getHoTen());
         }
     }
 

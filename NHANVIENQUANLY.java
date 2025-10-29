@@ -36,6 +36,6 @@ public class NHANVIENQUANLY extends NHANSU {
 
     @Override
     public String getLoaiNhanSu() {
-        return "Quản Lý";
+        return "Quan Ly";
     }
 }

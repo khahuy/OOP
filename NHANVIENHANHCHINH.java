@@ -15,6 +15,6 @@ public class NHANVIENHANHCHINH extends NHANSU {
 
     @Override
     public String getLoaiNhanSu() {
-        return "Hành Chính";
+        return "Hanh Chinh";
     }
 }

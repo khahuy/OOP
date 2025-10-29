@@ -80,11 +80,11 @@ public class BANGLUONG implements ITINHLUONG {
     }
 
     public void hienThiThongTin() {
-        System.out.println("Mã bảng lương: " + maBangLuong);
-        System.out.println("Nhân sự: " + nhanSu.getMaNhanSu());
-        System.out.println("Lương cơ bản: " + nhanSu.getLuongCoBan());
-        System.out.println("Thưởng: " + (thuong != null ? thuong.getSoTien() : 0.0));
-        System.out.println("Bảo hiểm: " + baoHiem.getPhiBaoHiem());
-        System.out.println("Lương thực nhận: " + luongThucNhan);
+        System.out.println("Ma bang luong: " + maBangLuong);
+        System.out.println("Nhan su: " + nhanSu.getMaNhanSu());
+        System.out.println("Luong co ban: " + nhanSu.getLuongCoBan());
+        System.out.println("Thuong: " + (thuong != null ? thuong.getSoTien() : 0.0));
+        System.out.println("Bao hiem: " + baoHiem.getPhiBaoHiem());
+        System.out.println("Luong thuc nhan: " + luongThucNhan);
     }
 }

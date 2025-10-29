@@ -102,13 +102,13 @@ public abstract class NHANSU {
     public abstract String getLoaiNhanSu();
 
     public void hienThiThongTin() {
-        System.out.println("Mã nhân sự: " + maNhanSu);
-        System.out.println("Họ tên: " + hoTen);
-        System.out.println("Giới tính: " + gioiTinh);
-        System.out.println("Địa chỉ: " + diaChi);
-        System.out.println("Số điện thoại: " + soDienThoai);
+        System.out.println("Ma nhan su: " + maNhanSu);
+        System.out.println("Ho ten: " + hoTen);
+        System.out.println("Gioi tinh: " + gioiTinh);
+        System.out.println("Dia chi: " + diaChi);
+        System.out.println("So dien thoai: " + soDienThoai);
         System.out.println("Email: " + email);
-        System.out.println("Phòng ban: " + (phongBan != null ? phongBan.getTenPhongBan() : "Chưa phân công"));
-        System.out.printf("Lương cơ bản: %.2f\n", luongCoBan);
+        System.out.println("Phong ban: " + (phongBan != null ? phongBan.getTenPhongBan() : "Chua phan cong"));
+        System.out.printf("Luong co ban: %.2f\n", luongCoBan);
     }
 }

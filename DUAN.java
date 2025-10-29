@@ -68,17 +68,17 @@ public class DUAN {
 
     public void hienThiThongTin() {
         if (nhanSu != null) {
-            System.out.println("Mã Nhân Sự: " + nhanSu.getMaNhanSu());
-            System.out.println("Tên Nhân Sự: " + nhanSu.getHoTen());
+            System.out.println("Ma Nhan Su: " + nhanSu.getMaNhanSu());
+            System.out.println("Ten Nhan Su: " + nhanSu.getHoTen());
         } else {
-            System.out.println("Chưa có nhân viên");
+            System.out.println("Chua co nhan vien");
         }
-        System.out.println("Mã Dự Án: " + maDuAn);
-        System.out.println("Tên Dự Án: " + tenDuAn);
-        System.out.println("Ngày Bắt Đầu: " + ngayBatDau);
-        System.out.println("Ngày Kết Thúc: " + ngayKetThuc);
+        System.out.println("Ma Du An: " + maDuAn);
+        System.out.println("Ten Du An: " + tenDuAn);
+        System.out.println("Ngay Bat Dau: " + ngayBatDau);
+        System.out.println("Ngay Ket Thuc: " + ngayKetThuc);
         if (lichLamViec != null) {
-            System.out.println("Lịch làm việc: " + lichLamViec.getNgayLamViec() + " - " + lichLamViec.getCaLamViec());
+            System.out.println("Lich lam viec: " + lichLamViec.getNgayLamViec() + " - " + lichLamViec.getCaLamViec());
         }
     }
 }

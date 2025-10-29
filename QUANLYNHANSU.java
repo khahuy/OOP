@@ -42,7 +42,7 @@ public class QUANLYNHANSU implements ICHUCNANG, IFILE {
         try {
             loai = Integer.parseInt(sc.nextLine());
         } catch (NumberFormatException e) {
-            System.out.println("❌ Loi: Vui long nhap so!");
+            System.out.println("Loi: Vui long nhap so!");
             return;
         }
 
@@ -76,7 +76,7 @@ public class QUANLYNHANSU implements ICHUCNANG, IFILE {
             System.out.print("He so luong: ");
             heSoLuong = Double.parseDouble(sc.nextLine());
         } catch (NumberFormatException e) {
-            System.out.println("❌ Loi: Luong va he so phai la so!");
+            System.out.println("Loi: Luong va he so phai la so!");
             return;
         }
 
@@ -109,7 +109,7 @@ public class QUANLYNHANSU implements ICHUCNANG, IFILE {
                     return;
             }
         } catch (NumberFormatException e) {
-            System.out.println("❌ Loi: Gia tri nhap vao khong hop le!");
+            System.out.println("Loi: Gia tri nhap vao khong hop le!");
             return;
         }
 
@@ -122,7 +122,7 @@ public class QUANLYNHANSU implements ICHUCNANG, IFILE {
 
         danhSachNhanSu[soLuongNhanSu] = nhanSu;
         soLuongNhanSu++;
-        System.out.println("✅ Them nhan su thanh cong!");
+        System.out.println("Them nhan su thanh cong!");
     }
 
     @Override
@@ -182,11 +182,11 @@ public class QUANLYNHANSU implements ICHUCNANG, IFILE {
                 nhanSu.setHeSoLuong(heSoLuong);
             }
         } catch (NumberFormatException e) {
-            System.out.println("❌ Loi: Gia tri khong hop le!");
+            System.out.println("Loi: Gia tri khong hop le!");
             return;
         }
 
-        System.out.println("✅ Cap nhat thong tin thanh cong!");
+        System.out.println("Cap nhat thong tin thanh cong!");
     }
 
     @Override
@@ -256,7 +256,7 @@ public class QUANLYNHANSU implements ICHUCNANG, IFILE {
         try {
             luaChon = Integer.parseInt(sc.nextLine());
         } catch (NumberFormatException e) {
-            System.out.println("❌ Loi: Vui long nhap so!");
+            System.out.println("Loi: Vui long nhap so!");
             return;
         }
 
@@ -335,7 +335,7 @@ public class QUANLYNHANSU implements ICHUCNANG, IFILE {
         try {
             loai = Integer.parseInt(sc.nextLine());
         } catch (NumberFormatException e) {
-            System.out.println("❌ Loi: Vui long nhap so!");
+            System.out.println("Loi: Vui long nhap so!");
             return;
         }
 
@@ -462,29 +462,29 @@ public class QUANLYNHANSU implements ICHUCNANG, IFILE {
 
     // Nhập nhiều nhân sự cùng lúc
     public void themNhieu() {
-        System.out.print("\nNhập số lượng nhân sự cần thêm: ");
+        System.out.print("\nNhap so luong nhan su can them: ");
         int n;
         try {
             n = Integer.parseInt(sc.nextLine());
         } catch (NumberFormatException e) {
-            System.out.println("❌ Lỗi: Vui lòng nhập số nguyên!");
+            System.out.println("Loi: Vui long nhap so nguyen!");
             return;
         }
 
         if (n <= 0) {
-            System.out.println("Số lượng phải lớn hơn 0.");
+            System.out.println("So luong phai lon hon 0.");
             return;
         }
 
         for (int i = 0; i < n; i++) {
             if (soLuongNhanSu >= MAX_NHANSU) {
-                System.out.println("Danh sách đã đầy, không thể thêm nữa.");
+                System.out.println("Danh sach đa đay, khong the them nưa.");
                 break;
             }
-            System.out.println("\n--- Nhập nhân sự thứ " + (i + 1) + " ---");
+            System.out.println("\n--- Nhap nhan su thu " + (i + 1) + " ---");
             them();
         }
-        System.out.println("Hoàn tất nhập " + n + " nhân sự (hoặc dừng sớm nếu danh sách đầy).\n");
+        System.out.println("Hoan tat nhap " + n + " nhan su (hoac dưng som neu danh sach đay).\n");
     }
 
 }
