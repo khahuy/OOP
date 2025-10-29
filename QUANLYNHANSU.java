@@ -42,7 +42,7 @@ public class QUANLYNHANSU implements ICHUCNANG, IFILE {
         try {
             loai = Integer.parseInt(sc.nextLine());
         } catch (NumberFormatException e) {
-            System.out.println("Loi: Vui long nhap so!");
+            System.out.println(" Loi: Vui long nhap so!");
             return;
         }
 
@@ -57,8 +57,15 @@ public class QUANLYNHANSU implements ICHUCNANG, IFILE {
 
         System.out.print("Ho ten: ");
         String hoTen = sc.nextLine();
-        System.out.print("Gioi tinh: ");
-        String gioiTinh = sc.nextLine();
+        String gioiTinh;
+        do {
+            System.out.print("Gioi tinh (Nam/Nu):");
+            gioiTinh = sc.nextLine();
+            if (!gioiTinh.equals("nam") && !gioiTinh.equals("nu")) {
+                System.out.println(" Loi: Vui long nhap gioi tinh hop le (Nam/Nu)!");
+            }
+        } while (!gioiTinh.equals("nam") && !gioiTinh.equals("nu"));
+
         System.out.print("Dia chi: ");
         String diaChi = sc.nextLine();
         System.out.print("So dien thoai: ");
@@ -66,7 +73,7 @@ public class QUANLYNHANSU implements ICHUCNANG, IFILE {
         System.out.print("Email: ");
         String email = sc.nextLine();
 
-        System.out.print("Phòng ban: ");
+        System.out.print("Phong ban: ");
         String phongBan = sc.nextLine();
 
         double luongCoBan, heSoLuong;
@@ -76,7 +83,7 @@ public class QUANLYNHANSU implements ICHUCNANG, IFILE {
             System.out.print("He so luong: ");
             heSoLuong = Double.parseDouble(sc.nextLine());
         } catch (NumberFormatException e) {
-            System.out.println("Loi: Luong va he so phai la so!");
+            System.out.println(" Loi: Luong va he so phai la so!");
             return;
         }
 
@@ -122,7 +129,7 @@ public class QUANLYNHANSU implements ICHUCNANG, IFILE {
 
         danhSachNhanSu[soLuongNhanSu] = nhanSu;
         soLuongNhanSu++;
-        System.out.println("Them nhan su thanh cong!");
+        System.out.println("✅ Them nhan su thanh cong!");
     }
 
     @Override
@@ -143,8 +150,15 @@ public class QUANLYNHANSU implements ICHUCNANG, IFILE {
             nhanSu.setHoTen(hoTen);
         }
 
-        System.out.print("Gioi tinh moi (Enter de giu nguyen): ");
-        String gioiTinh = sc.nextLine();
+        System.out.print("Gioi tinh moi (Nam/Nu) (Enter de giu nguyen): ");
+        String gioiTinh;
+        do {
+            gioiTinh = sc.nextLine();
+            if (!gioiTinh.equals("nam") && !gioiTinh.equals("nu")) {
+                System.out.println(" Loi: Vui long nhap gioi tinh hop le (Nam/Nu)!");
+            }
+        } while (!gioiTinh.equals("nam") && !gioiTinh.equals("nu"));
+
         if (!gioiTinh.isEmpty()) {
             nhanSu.setGioiTinh(gioiTinh);
         }
@@ -182,7 +196,7 @@ public class QUANLYNHANSU implements ICHUCNANG, IFILE {
                 nhanSu.setHeSoLuong(heSoLuong);
             }
         } catch (NumberFormatException e) {
-            System.out.println("Loi: Gia tri khong hop le!");
+            System.out.println(" Loi: Gia tri khong hop le!");
             return;
         }
 
@@ -239,7 +253,7 @@ public class QUANLYNHANSU implements ICHUCNANG, IFILE {
             System.out.println("\nNhan su " + (i + 1) + ":");
             danhSachNhanSu[i].hienThiThongTin();
             System.out.println("Loai nhan su: " + danhSachNhanSu[i].getLoaiNhanSu());
-            System.out.printf("Luong: %.2f\n", danhSachNhanSu[i].tinhLuong());
+            System.out.printf("Luong: %.2f", danhSachNhanSu[i].tinhLuong());
             System.out.println("----------------------------------------");
         }
     }
@@ -256,7 +270,7 @@ public class QUANLYNHANSU implements ICHUCNANG, IFILE {
         try {
             luaChon = Integer.parseInt(sc.nextLine());
         } catch (NumberFormatException e) {
-            System.out.println("Loi: Vui long nhap so!");
+            System.out.println(" Loi: Vui long nhap so!");
             return;
         }
 
@@ -335,7 +349,7 @@ public class QUANLYNHANSU implements ICHUCNANG, IFILE {
         try {
             loai = Integer.parseInt(sc.nextLine());
         } catch (NumberFormatException e) {
-            System.out.println("Loi: Vui long nhap so!");
+            System.out.println(" Loi: Vui long nhap so!");
             return;
         }
 
@@ -432,7 +446,7 @@ public class QUANLYNHANSU implements ICHUCNANG, IFILE {
             String loai = danhSachNhanSu[i].getLoaiNhanSu();
             if (loai.equals("Ky Thuat")) {
                 soKyThuat++;
-            } else if (loai.equals("Hanh Chinh")) {
+            } else if (loai.equals("HHanh Chinh")) {
                 soHanhChinh++;
             } else if (loai.equals("Quan Ly")) {
                 soQuanLy++;
@@ -467,7 +481,7 @@ public class QUANLYNHANSU implements ICHUCNANG, IFILE {
         try {
             n = Integer.parseInt(sc.nextLine());
         } catch (NumberFormatException e) {
-            System.out.println("Loi: Vui long nhap so nguyen!");
+            System.out.println(" Loi: Vui long nhap so nguyen!");
             return;
         }
 
@@ -478,13 +492,13 @@ public class QUANLYNHANSU implements ICHUCNANG, IFILE {
 
         for (int i = 0; i < n; i++) {
             if (soLuongNhanSu >= MAX_NHANSU) {
-                System.out.println("Danh sach đa đay, khong the them nưa.");
+                System.out.println("Danh sach da day, khong the them nua.");
                 break;
             }
             System.out.println("\n--- Nhap nhan su thu " + (i + 1) + " ---");
             them();
         }
-        System.out.println("Hoan tat nhap " + n + " nhan su (hoac dưng som neu danh sach đay).\n");
+        System.out.println("Hoan tat nhap " + n + " nhan su (hoac dung som neu danh sach day).\n");
     }
 
 }
