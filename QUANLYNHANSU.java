@@ -239,7 +239,7 @@ public class QUANLYNHANSU implements ICHUCNANG, IFILE {
             System.out.println("\nNhan su " + (i + 1) + ":");
             danhSachNhanSu[i].hienThiThongTin();
             System.out.println("Loai nhan su: " + danhSachNhanSu[i].getLoaiNhanSu());
-            System.out.println("Luong: " + danhSachNhanSu[i].tinhLuong());
+            System.out.printf("Luong: %.2f\n", danhSachNhanSu[i].tinhLuong());
             System.out.println("----------------------------------------");
         }
     }
