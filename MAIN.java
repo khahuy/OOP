@@ -40,7 +40,8 @@ public class MAIN {
 
             switch (luaChon) {
                 case 1:
-                    qlns.them();
+                    // Khi chọn thêm, hỏi số lượng muốn thêm rồi gọi phương thức themNhieu()
+                    qlns.themNhieu();
                     break;
                 case 2:
                     qlns.sua();
@@ -67,6 +68,9 @@ public class MAIN {
                     break;
                 case 9:
                     qlns.docFile();
+                    break;
+                case 10:
+                    qlns.themNhieu();
                     break;
                 case 0:
                     System.out.println("\n╔═══════════════════════════════════════════════╗");

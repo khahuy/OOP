@@ -66,6 +66,9 @@ public class QUANLYNHANSU implements ICHUCNANG, IFILE {
         System.out.print("Email: ");
         String email = sc.nextLine();
 
+        System.out.print("Phòng ban: ");
+        String phongBan = sc.nextLine();
+
         double luongCoBan, heSoLuong;
         try {
             System.out.print("Luong co ban: ");
@@ -108,6 +111,13 @@ public class QUANLYNHANSU implements ICHUCNANG, IFILE {
         } catch (NumberFormatException e) {
             System.out.println("❌ Loi: Gia tri nhap vao khong hop le!");
             return;
+        }
+
+        // set phong ban cho nhan su neu da nhap
+        if (nhanSu != null) {
+            PHONGBAN pb = new PHONGBAN();
+            pb.setTenPhongBan(phongBan);
+            nhanSu.setPhongBan(pb);
         }
 
         danhSachNhanSu[soLuongNhanSu] = nhanSu;
@@ -448,6 +458,33 @@ public class QUANLYNHANSU implements ICHUCNANG, IFILE {
             }
         }
         System.out.println("Da sap xep theo luong tang dan!");
+    }
+
+    // Nhập nhiều nhân sự cùng lúc
+    public void themNhieu() {
+        System.out.print("\nNhập số lượng nhân sự cần thêm: ");
+        int n;
+        try {
+            n = Integer.parseInt(sc.nextLine());
+        } catch (NumberFormatException e) {
+            System.out.println("❌ Lỗi: Vui lòng nhập số nguyên!");
+            return;
+        }
+
+        if (n <= 0) {
+            System.out.println("Số lượng phải lớn hơn 0.");
+            return;
+        }
+
+        for (int i = 0; i < n; i++) {
+            if (soLuongNhanSu >= MAX_NHANSU) {
+                System.out.println("Danh sách đã đầy, không thể thêm nữa.");
+                break;
+            }
+            System.out.println("\n--- Nhập nhân sự thứ " + (i + 1) + " ---");
+            them();
+        }
+        System.out.println("Hoàn tất nhập " + n + " nhân sự (hoặc dừng sớm nếu danh sách đầy).\n");
     }
 
 }

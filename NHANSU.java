@@ -109,6 +109,6 @@ public abstract class NHANSU {
         System.out.println("Số điện thoại: " + soDienThoai);
         System.out.println("Email: " + email);
         System.out.println("Phòng ban: " + (phongBan != null ? phongBan.getTenPhongBan() : "Chưa phân công"));
-        System.out.println("Lương cơ bản: " + luongCoBan);
+        System.out.printf("Lương cơ bản: %.2f\n", luongCoBan);
     }
 }
