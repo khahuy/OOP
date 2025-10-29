@@ -24,6 +24,25 @@ public class QUANLYNHANSU implements ICHUCNANG, IFILE {
         return soLuongNhanSu;
     }
 
+    // Phương thức helper để nhập giới tính hợp lệ
+    private String nhapGioiTinh(boolean choPhepBoQua) {
+        while (true) {
+            String prompt = choPhepBoQua ? "Gioi tinh moi (Nam/Nu, Enter de giu nguyen): " : "Gioi tinh (Nam/Nu): ";
+            System.out.print(prompt);
+            String gioiTinh = sc.nextLine().trim();
+
+            if (choPhepBoQua && gioiTinh.isEmpty()) {
+                return null; // Giữ nguyên
+            }
+
+            if (gioiTinh.equalsIgnoreCase("Nam") || gioiTinh.equalsIgnoreCase("Nu")) {
+                return gioiTinh.substring(0, 1).toUpperCase() + gioiTinh.substring(1).toLowerCase();
+            }
+
+            System.out.println("Loi: Gioi tinh chi duoc nhap 'Nam' hoac 'Nu'!");
+        }
+    }
+
     @Override
     public void them() {
         if (soLuongNhanSu >= MAX_NHANSU) {
@@ -150,16 +169,8 @@ public class QUANLYNHANSU implements ICHUCNANG, IFILE {
             nhanSu.setHoTen(hoTen);
         }
 
-        System.out.print("Gioi tinh moi (Nam/Nu) (Enter de giu nguyen): ");
-        String gioiTinh;
-        do {
-            gioiTinh = sc.nextLine().trim().toLowerCase();
-            if (!gioiTinh.equals("nam") && !gioiTinh.equals("nu")) {
-                System.out.println(" Loi: Vui long nhap gioi tinh hop le (Nam/Nu)!");
-            }
-        } while (!gioiTinh.equals("nam") && !gioiTinh.equals("nu"));
-
-        if (!gioiTinh.isEmpty()) {
+        String gioiTinh = nhapGioiTinh(true);
+        if (gioiTinh != null) {
             nhanSu.setGioiTinh(gioiTinh);
         }
 
