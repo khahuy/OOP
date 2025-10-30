@@ -399,7 +399,7 @@ public class QUANLYNHANSU implements ICHUCNANG, IFILE {
     @Override
     public void ghiFile() {
         try {
-            FileWriter fw = new FileWriter("danhsachnhansu.txt");
+            FileWriter fw = new FileWriter("danhsachnhansuu.txt");
             BufferedWriter bw = new BufferedWriter(fw);
 
             bw.write("Tong so nhan su: " + soLuongNhanSu + "\n");
