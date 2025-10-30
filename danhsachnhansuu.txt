@@ -1,0 +1,13 @@
+Tong so nhan su: 1
+========================================
+Ma: 3123410304
+Ho ten: Phan Dang Sang
+Gioi tinh: nam
+Dia chi: Nghe An
+SDT: 0365604327
+Email: phandangsang05@gmail.com
+Luong co ban: 1000000.0
+He so luong: 2.0
+Loai: Hanh Chinh
+Luong: 2000000.0
+----------------------------------------
