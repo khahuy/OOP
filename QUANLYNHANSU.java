@@ -148,7 +148,7 @@ public class QUANLYNHANSU implements ICHUCNANG, IFILE {
 
         danhSachNhanSu[soLuongNhanSu] = nhanSu;
         soLuongNhanSu++;
-        System.out.println("✅ Them nhan su thanh cong!");
+        System.out.println("Them nhan su thanh cong!");
     }
 
     @Override
