@@ -87,8 +87,15 @@ public class QUANLYNHANSU implements ICHUCNANG, IFILE {
 
         System.out.print("Dia chi: ");
         String diaChi = sc.nextLine();
-        System.out.print("So dien thoai: ");
-        String soDienThoai = sc.nextLine();
+        String soDienThoai;
+        do {
+            System.out.print("Nhap so dien thoai:");
+            soDienThoai = sc.nextLine();
+            if (!soDienThoai.matches("\\d{10}")) {
+                System.out.println(" Vui long nhap so dien thoai hop le (10 chu so)!");
+            }
+        } while (!soDienThoai.matches("\\d{10}"));
+
         System.out.print("Email: ");
         String email = sc.nextLine();
 
@@ -96,15 +103,38 @@ public class QUANLYNHANSU implements ICHUCNANG, IFILE {
         String phongBan = sc.nextLine();
 
         double luongCoBan, heSoLuong;
-        try {
-            System.out.print("Luong co ban: ");
-            luongCoBan = Double.parseDouble(sc.nextLine());
-            System.out.print("He so luong: ");
-            heSoLuong = Double.parseDouble(sc.nextLine());
-        } catch (NumberFormatException e) {
-            System.out.println(" Loi: Luong va he so phai la so!");
-            return;
-        }
+        do {
+            System.out.print("luong co ban:");
+            String luongStr = sc.nextLine();
+            try {
+                luongCoBan = Double.parseDouble(luongStr);
+                if (luongCoBan <= 0) {
+                    System.out.println(" Luong co ban phai lon hon 0!");
+                } else {
+                    break;
+
+                }
+            } catch (NumberFormatException e) {
+                System.out.println(" Loi: Vui long nhap so hop le!");
+                luongCoBan = -1; // Đặt giá trị không hợp lệ để lặp lại
+            }
+        } while (true);
+
+        do {
+            System.out.print("he so luong:");
+            String heSoStr = sc.nextLine();
+            try {
+                heSoLuong = Double.parseDouble(heSoStr);
+                if (heSoLuong <= 0) {
+                    System.out.println(" He so luong phai lon hon 0!");
+                } else {
+                    break;
+                }
+            } catch (NumberFormatException e) {
+                System.out.println(" Loi: Vui long nhap so hop le!");
+                heSoLuong = -1; // Đặt giá trị không hợp lệ để lặp lại
+            }
+        } while (true);
 
         NHANSU nhanSu = null;
 
@@ -191,25 +221,43 @@ public class QUANLYNHANSU implements ICHUCNANG, IFILE {
         if (!email.isEmpty()) {
             nhanSu.setEmail(email);
         }
-
-        try {
-            System.out.print("Luong co ban moi (Enter de giu nguyen): ");
+        do {
+            System.out.print("luong co ban moi (Enter de giu nguyen): ");
             String luongStr = sc.nextLine();
-            if (!luongStr.isEmpty()) {
+            if (luongStr.isEmpty()) {
+                break; // Giữ nguyên
+            }
+            try {
                 double luongCoBan = Double.parseDouble(luongStr);
-                nhanSu.setLuongCoBan(luongCoBan);
+                if (luongCoBan <= 0) {
+                    System.out.println(" Luong co ban phai lon hon 0!");
+                } else {
+                    nhanSu.setLuongCoBan(luongCoBan);
+                    break;
+                }
+            } catch (NumberFormatException e) {
+                System.out.println(" Loi: Vui long nhap so hop le!");
             }
+        } while (true);
 
-            System.out.print("He so luong moi (Enter de giu nguyen): ");
+        do {
+            System.out.print("he so luong moi (Enter de giu nguyen): ");
             String heSoStr = sc.nextLine();
-            if (!heSoStr.isEmpty()) {
-                double heSoLuong = Double.parseDouble(heSoStr);
-                nhanSu.setHeSoLuong(heSoLuong);
+            if (heSoStr.isEmpty()) {
+                break; // Giữ nguyên
             }
-        } catch (NumberFormatException e) {
-            System.out.println(" Loi: Gia tri khong hop le!");
-            return;
-        }
+            try {
+                double heSoLuong = Double.parseDouble(heSoStr);
+                if (heSoLuong <= 0) {
+                    System.out.println(" He so luong phai lon hon 0!");
+                } else {
+                    nhanSu.setHeSoLuong(heSoLuong);
+                    break;
+                }
+            } catch (NumberFormatException e) {
+                System.out.println(" Loi: Vui long nhap so hop le!");
+            }
+        } while (true);
 
         System.out.println("Cap nhat thong tin thanh cong!");
     }
