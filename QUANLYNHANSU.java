@@ -306,15 +306,25 @@ public class QUANLYNHANSU implements ICHUCNANG, IFILE {
 
         System.out.println("\n=== DANH SACH NHAN SU ===");
         System.out.println("Tong so: " + soLuongNhanSu + " nhan su");
-        System.out.println("----------------------------------------");
+        System.out.printf("%-5s %-15s %-20s %-10s %-15s %-12s\n",
+                "STT", "Ma", "Ho Ten", "Gioi Tinh", "Loai NS", "Luong");
+        System.out.println("-------------------------------------------------------------------------------------");
 
+        // for (int i = 0; i < soLuongNhanSu; i++) {
+        // System.out.println("\nNhan su " + (i + 1) + ":");
+        // danhSachNhanSu[i].hienThiThongTin();
+        // System.out.println("Loai nhan su: " + danhSachNhanSu[i].getLoaiNhanSu());
+        // System.out.printf("Luong: %.2f\n", danhSachNhanSu[i].tinhLuong());
+        // System.out.println("----------------------------------------");
+        // }
+        // }
         for (int i = 0; i < soLuongNhanSu; i++) {
-            System.out.println("\nNhan su " + (i + 1) + ":");
-            danhSachNhanSu[i].hienThiThongTin();
-            System.out.println("Loai nhan su: " + danhSachNhanSu[i].getLoaiNhanSu());
-            System.out.printf("Luong: %.2f\n", danhSachNhanSu[i].tinhLuong());
-            System.out.println("----------------------------------------");
+            NHANSU ns = danhSachNhanSu[i];
+            System.out.printf("%-5d %-15s %-20s %-10s %-15s %-12.2f\n",
+                    (i + 1), ns.getMaNhanSu(), ns.getHoTen(), ns.getGioiTinh(),
+                    ns.getLoaiNhanSu(), ns.tinhLuong());
         }
+        System.out.println("-----------------------------------------------------------------------------------");
     }
 
     @Override

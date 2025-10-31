@@ -3,7 +3,6 @@ public class HOPDONG {
     private String loaiHopDong;
     private String ngayBatDau;
     private String ngayKetThuc;
-    private double mucLuong;
     private NHANVIENHANHCHINH nhanvienhanhchinh;
     private NHANVIENKYTHUAT nhanvienkythuat;
     private NHANVIENQUANLY nhanvienquanly;
@@ -12,12 +11,11 @@ public class HOPDONG {
 
     }
 
-    public HOPDONG(String maHopDong, String loaiHopDong, String ngayBatDau, String ngayKetThuc, double mucLuong) {
+    public HOPDONG(String maHopDong, String loaiHopDong, String ngayBatDau, String ngayKetThuc) {
         this.maHopDong = maHopDong;
         this.loaiHopDong = loaiHopDong;
         this.ngayBatDau = ngayBatDau;
         this.ngayKetThuc = ngayKetThuc;
-        this.mucLuong = mucLuong;
     }
 
     public String getMaHopDong() {
@@ -50,14 +48,6 @@ public class HOPDONG {
 
     public void setNgayKetThuc(String ngayKetThuc) {
         this.ngayKetThuc = ngayKetThuc;
-    }
-
-    public double getMucLuong() {
-        return mucLuong;
-    }
-
-    public void setMucLuong(double mucLuong) {
-        this.mucLuong = mucLuong;
     }
 
     public NHANVIENHANHCHINH getNhanvienhanhchinh() {
@@ -101,11 +91,10 @@ public class HOPDONG {
     }
 
     public void hienThiThongTin() {
-        System.out.println("Ma hop đong: " + maHopDong);
-        System.out.println("Loai hop đong: " + loaiHopDong);
-        System.out.println("Ngay bat đau: " + ngayBatDau);
+        System.out.println("Ma hop dong: " + maHopDong);
+        System.out.println("Loai hop dong: " + loaiHopDong);
+        System.out.println("Ngay bat dau: " + ngayBatDau);
         System.out.println("Ngay ket thuc: " + ngayKetThuc);
-        System.out.println("Muc luong: " + mucLuong);
 
         NHANSU nv = getNhanVien();
         if (nv != null) {

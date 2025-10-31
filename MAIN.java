@@ -79,11 +79,11 @@ public class MAIN {
                     System.out.println("╚═══════════════════════════════════════════════╝");
                     break;
                 default:
-                    System.out.println("Lua chon khong hop le! Vui long chon tu 0-9.");
+                    System.out.println("Lua chon khong hop le! Vui long chon tu 0-13.");
             }
 
             // Tạm dừng để người dùng đọc kết quả
-            if (luaChon != 0 && luaChon >= 1 && luaChon <= 9) {
+            if (luaChon != 0 && luaChon >= 1 && luaChon <= 13) {
                 System.out.println("\nNhan Enter de tiep tuc...");
                 try {
                     sc.nextLine();
