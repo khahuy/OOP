@@ -91,10 +91,10 @@ public class QUANLYNHANSU implements ICHUCNANG, IFILE {
         do {
             System.out.print("Nhap so dien thoai:");
             soDienThoai = sc.nextLine();
-            if (!soDienThoai.matches("\\d{10}")) {
+            if (!soDienThoai.matches("0\\d{9}")) {
                 System.out.println(" Vui long nhap so dien thoai hop le (10 chu so)!");
             }
-        } while (!soDienThoai.matches("\\d{10}"));
+        } while (!soDienThoai.matches("0\\d{9}"));
 
         System.out.print("Email: ");
         String email = sc.nextLine();
@@ -155,10 +155,8 @@ public class QUANLYNHANSU implements ICHUCNANG, IFILE {
                 case 3:
                     System.out.print("Phu cap: ");
                     double phuCap = Double.parseDouble(sc.nextLine());
-                    System.out.print("So luong nhan vien quan ly: ");
-                    int soQuanLy = Integer.parseInt(sc.nextLine());
                     nhanSu = new NHANVIENQUANLY(maNhanSu, hoTen, gioiTinh, diaChi, soDienThoai, email, luongCoBan,
-                            heSoLuong, phuCap, soQuanLy);
+                            heSoLuong, phuCap);
                     break;
                 default:
                     System.out.println("Lua chon khong hop le!");
@@ -307,24 +305,18 @@ public class QUANLYNHANSU implements ICHUCNANG, IFILE {
         System.out.println("\n=== DANH SACH NHAN SU ===");
         System.out.println("Tong so: " + soLuongNhanSu + " nhan su");
         System.out.printf("%-5s %-15s %-20s %-10s %-15s %-12s\n",
-                "STT", "Ma", "Ho Ten", "Gioi Tinh", "Loai NS", "Luong");
-        System.out.println("-------------------------------------------------------------------------------------");
-
-        // for (int i = 0; i < soLuongNhanSu; i++) {
-        // System.out.println("\nNhan su " + (i + 1) + ":");
-        // danhSachNhanSu[i].hienThiThongTin();
-        // System.out.println("Loai nhan su: " + danhSachNhanSu[i].getLoaiNhanSu());
-        // System.out.printf("Luong: %.2f\n", danhSachNhanSu[i].tinhLuong());
-        // System.out.println("----------------------------------------");
-        // }
-        // }
+                "STT", "Ma", "Ho Ten", "Gioi Tinh", "Loai NS", "Luong", "Phong Ban");
+        System.out.println(
+                "-----------------------------------------------------------------------------------------------------------------");
         for (int i = 0; i < soLuongNhanSu; i++) {
             NHANSU ns = danhSachNhanSu[i];
-            System.out.printf("%-5d %-15s %-20s %-10s %-15s %-12.2f\n",
+            System.out.printf("%-5d %-15s %-20s %-10s %-15s %-12.2f %-15s\n",
                     (i + 1), ns.getMaNhanSu(), ns.getHoTen(), ns.getGioiTinh(),
-                    ns.getLoaiNhanSu(), ns.tinhLuong());
+                    ns.getLoaiNhanSu(), ns.tinhLuong(),
+                    ns.getPhongBan() != null ? ns.getPhongBan().getTenPhongBan() : "Chua xac dinh");
         }
-        System.out.println("-----------------------------------------------------------------------------------");
+        System.out.println(
+                "-------------------------------------------------------------------------------------------------------------------");
     }
 
     @Override
