@@ -1,6 +1,7 @@
 public class NHANVIENKYTHUAT extends NHANSU {
     private double soGioLamThem;
     private double donGiaGioLamThem;
+    private HOPDONG hopDong;
 
     public NHANVIENKYTHUAT() {
 
@@ -27,6 +28,14 @@ public class NHANVIENKYTHUAT extends NHANSU {
 
     public void setDonGiaGioLamThem(double donGiaGioLamThem) {
         this.donGiaGioLamThem = donGiaGioLamThem;
+    }
+
+    public HOPDONG getHopDong() {
+        return hopDong;
+    }
+
+    public void setHopDong(HOPDONG hopDong) {
+        this.hopDong = hopDong;
     }
 
     @Override

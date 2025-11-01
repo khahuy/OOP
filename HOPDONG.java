@@ -3,9 +3,6 @@ public class HOPDONG {
     private String loaiHopDong;
     private String ngayBatDau;
     private String ngayKetThuc;
-    private NHANVIENHANHCHINH nhanvienhanhchinh;
-    private NHANVIENKYTHUAT nhanvienkythuat;
-    private NHANVIENQUANLY nhanvienquanly;
 
     public HOPDONG() {
 
@@ -50,58 +47,11 @@ public class HOPDONG {
         this.ngayKetThuc = ngayKetThuc;
     }
 
-    public NHANVIENHANHCHINH getNhanvienhanhchinh() {
-        return nhanvienhanhchinh;
-    }
-
-    public void setNhanvienhanhchinh(NHANVIENHANHCHINH nhanvienhanhchinh) {
-        this.nhanvienhanhchinh = nhanvienhanhchinh;
-        this.nhanvienkythuat = null;
-        this.nhanvienquanly = null;
-    }
-
-    public NHANVIENKYTHUAT getNhanvienkythuat() {
-        return nhanvienkythuat;
-    }
-
-    public void setNhanvienkythuat(NHANVIENKYTHUAT nhanvienkythuat) {
-        this.nhanvienkythuat = nhanvienkythuat;
-        this.nhanvienhanhchinh = null;
-        this.nhanvienquanly = null;
-    }
-
-    public NHANVIENQUANLY getNhanvienquanly() {
-        return nhanvienquanly;
-    }
-
-    public void setNhanvienquanly(NHANVIENQUANLY nhanvienquanly) {
-        this.nhanvienquanly = nhanvienquanly;
-        this.nhanvienhanhchinh = null;
-        this.nhanvienkythuat = null;
-    }
-
-    public NHANSU getNhanVien() {
-        if (nhanvienhanhchinh != null)
-            return nhanvienhanhchinh;
-        if (nhanvienkythuat != null)
-            return nhanvienkythuat;
-        if (nhanvienquanly != null)
-            return nhanvienquanly;
-        return null;
-    }
-
     public void hienThiThongTin() {
         System.out.println("Ma hop dong: " + maHopDong);
         System.out.println("Loai hop dong: " + loaiHopDong);
         System.out.println("Ngay bat dau: " + ngayBatDau);
         System.out.println("Ngay ket thuc: " + ngayKetThuc);
-
-        NHANSU nv = getNhanVien();
-        if (nv != null) {
-            System.out.println("Nhan vien: " + nv.getHoTen() + " (" + nv.getLoaiNhanSu() + ")");
-        } else {
-            System.out.println("Nhan vien: Chua co");
-        }
     }
 
 }

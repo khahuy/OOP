@@ -1,5 +1,6 @@
 public class NHANVIENQUANLY extends NHANSU {
     private double phuCap;
+    private HOPDONG hopDong;
 
     public NHANVIENQUANLY() {
 
@@ -17,6 +18,14 @@ public class NHANVIENQUANLY extends NHANSU {
 
     public void setPhuCap(double phuCap) {
         this.phuCap = phuCap;
+    }
+
+    public HOPDONG getHopDong() {
+        return hopDong;
+    }
+
+    public void setHopDong(HOPDONG hopDong) {
+        this.hopDong = hopDong;
     }
 
     @Override
