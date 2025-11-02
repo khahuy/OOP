@@ -519,10 +519,21 @@ public class QUANLYNHANSU implements ICHUCNANG, IFILE {
 
         NHANSU nhanSu = timKiemTheoMa(maNhanSu);
         if (nhanSu != null) {
-            System.out.println("\nThong tin nhan su:");
-            nhanSu.hienThiThongTin();
-            System.out.println("Loai nhan su: " + nhanSu.getLoaiNhanSu());
-            System.out.println("Luong: " + nhanSu.tinhLuong());
+            System.out.println("\n=== KET QUA TIM KIEM ===");
+            System.out.printf("%-5s %-15s %-20s %-10s %-15s %-12s %-15s\n",
+                    "STT", "Ma", "Ho Ten", "Gioi Tinh", "Loai NS", "Luong", "Phong Ban");
+            System.out.println(
+                    "---------------------------------------------------------------------------------------------------------------------------");
+            System.out.printf("%-5d %-15s %-20s %-10s %-15s %-12.2f %-15s\n",
+                    1,
+                    nhanSu.getMaNhanSu(),
+                    nhanSu.getHoTen(),
+                    nhanSu.getGioiTinh(),
+                    nhanSu.getLoaiNhanSu(),
+                    nhanSu.tinhLuong(),
+                    nhanSu.getPhongBan() != null ? nhanSu.getPhongBan().getTenPhongBan() : "Chua xac dinh");
+            System.out.println(
+                    "---------------------------------------------------------------------------------------------------------------------------");
         } else {
             System.out.println("Khong tim thay nhan su!");
         }
@@ -533,21 +544,45 @@ public class QUANLYNHANSU implements ICHUCNANG, IFILE {
         System.out.print("Nhap ten can tim: ");
         String ten = sc.nextLine();
 
-        boolean timThay = false;
-        System.out.println("\nKet qua tim kiem:");
-
+        // Đếm số lượng kết quả
+        int soKetQua = 0;
         for (int i = 0; i < soLuongNhanSu; i++) {
             if (danhSachNhanSu[i].getHoTen().toLowerCase().contains(ten.toLowerCase())) {
-                System.out.println("\nNhan su " + (i + 1) + ":");
-                danhSachNhanSu[i].hienThiThongTin();
-                System.out.println("Loai nhan su: " + danhSachNhanSu[i].getLoaiNhanSu());
-                timThay = true;
+                soKetQua++;
             }
         }
 
-        if (!timThay) {
-            System.out.println("Khong tim thay nhan su nao!");
+        if (soKetQua == 0) {
+            System.out.println("\nKhong tim thay nhan su nao!");
+            return;
         }
+
+        // Hiển thị kết quả dưới dạng bảng
+        System.out.println("\n=== KET QUA TIM KIEM ===");
+        System.out.println("Tim thay " + soKetQua + " nhan su");
+        System.out.printf("%-5s %-15s %-20s %-10s %-15s %-12s %-15s\n",
+                "STT", "Ma", "Ho Ten", "Gioi Tinh", "Loai NS", "Luong", "Phong Ban");
+        System.out.println(
+                "---------------------------------------------------------------------------------------------------------------------------");
+
+        int stt = 0;
+        for (int i = 0; i < soLuongNhanSu; i++) {
+            if (danhSachNhanSu[i].getHoTen().toLowerCase().contains(ten.toLowerCase())) {
+                stt++;
+                NHANSU ns = danhSachNhanSu[i];
+                System.out.printf("%-5d %-15s %-20s %-10s %-15s %-12.2f %-15s\n",
+                        stt,
+                        ns.getMaNhanSu(),
+                        ns.getHoTen(),
+                        ns.getGioiTinh(),
+                        ns.getLoaiNhanSu(),
+                        ns.tinhLuong(),
+                        ns.getPhongBan() != null ? ns.getPhongBan().getTenPhongBan() : "Chua xac dinh");
+            }
+        }
+
+        System.out.println(
+                "---------------------------------------------------------------------------------------------------------------------------");
     }
 
     // Tìm kiếm theo loại nhân sự
@@ -582,20 +617,45 @@ public class QUANLYNHANSU implements ICHUCNANG, IFILE {
                 return;
         }
 
-        boolean timThay = false;
-        System.out.println("\nDanh sach " + loaiNhanSu + ":");
-
+        // Đếm số lượng kết quả
+        int soKetQua = 0;
         for (int i = 0; i < soLuongNhanSu; i++) {
             if (danhSachNhanSu[i].getLoaiNhanSu().equals(loaiNhanSu)) {
-                System.out.println("\nNhan su " + (i + 1) + ":");
-                danhSachNhanSu[i].hienThiThongTin();
-                timThay = true;
+                soKetQua++;
             }
         }
 
-        if (!timThay) {
-            System.out.println("Khong tim thay nhan su nao!");
+        if (soKetQua == 0) {
+            System.out.println("\nKhong tim thay nhan su nao!");
+            return;
         }
+
+        // Hiển thị kết quả dưới dạng bảng
+        System.out.println("\n=== DANH SACH " + loaiNhanSu.toUpperCase() + " ===");
+        System.out.println("Tim thay " + soKetQua + " nhan su");
+        System.out.printf("%-5s %-15s %-20s %-10s %-15s %-12s %-15s\n",
+                "STT", "Ma", "Ho Ten", "Gioi Tinh", "Loai NS", "Luong", "Phong Ban");
+        System.out.println(
+                "---------------------------------------------------------------------------------------------------------------------------");
+
+        int stt = 0;
+        for (int i = 0; i < soLuongNhanSu; i++) {
+            if (danhSachNhanSu[i].getLoaiNhanSu().equals(loaiNhanSu)) {
+                stt++;
+                NHANSU ns = danhSachNhanSu[i];
+                System.out.printf("%-5d %-15s %-20s %-10s %-15s %-12.2f %-15s\n",
+                        stt,
+                        ns.getMaNhanSu(),
+                        ns.getHoTen(),
+                        ns.getGioiTinh(),
+                        ns.getLoaiNhanSu(),
+                        ns.tinhLuong(),
+                        ns.getPhongBan() != null ? ns.getPhongBan().getTenPhongBan() : "Chua xac dinh");
+            }
+        }
+
+        System.out.println(
+                "---------------------------------------------------------------------------------------------------------------------------");
     }
 
     @Override
@@ -989,16 +1049,37 @@ public class QUANLYNHANSU implements ICHUCNANG, IFILE {
         System.out.print("Nhap ma bang luong: ");
         String maBangLuong = sc.nextLine();
 
+        boolean timThay = false;
         for (int i = 0; i < soLuongBangLuong; i++) {
             if (danhSachBangLuong[i].getMaBangLuong().equalsIgnoreCase(maBangLuong)) {
-                System.out.println("\nThong tin bang luong:");
-                danhSachBangLuong[i].hienThiThongTin();
-                System.out.println("So ngay lam viec: " + danhSachBangLuong[i].getChamCong().getSoNgayLamViec());
-                System.out.println("So ngay nghi: " + danhSachBangLuong[i].getChamCong().getSoNgayNghi());
+                BANGLUONG bl = danhSachBangLuong[i];
+
+                System.out.println("\n=== KET QUA TIM KIEM ===");
+                System.out.printf("%-5s %-12s %-12s %-20s %-15s %-12s %-12s %-12s %-15s\n",
+                        "STT", "Ma BL", "Ma NS", "Ho Ten", "Loai NS", "Ngay Lam", "Thuong", "Bao Hiem",
+                        "Luong Thuc Nhan");
+                System.out.println(
+                        "-------------------------------------------------------------------------------------------------------------------------");
+                System.out.printf("%-5d %-12s %-12s %-20s %-15s %-12d %-12.2f %-12.2f %-15.2f\n",
+                        1,
+                        bl.getMaBangLuong(),
+                        bl.getNhanSu().getMaNhanSu(),
+                        bl.getNhanSu().getHoTen(),
+                        bl.getNhanSu().getLoaiNhanSu(),
+                        bl.getChamCong().getSoNgayLamViec(),
+                        bl.getThuong(),
+                        bl.getBaoHiem(),
+                        bl.getLuongThucNhan());
+                System.out.println(
+                        "-------------------------------------------------------------------------------------------------------------------------");
+                timThay = true;
                 return;
             }
         }
-        System.out.println("Khong tim thay bang luong!");
+
+        if (!timThay) {
+            System.out.println("Khong tim thay bang luong!");
+        }
     }
 
     // Xóa bảng lương
@@ -1210,7 +1291,21 @@ public class QUANLYNHANSU implements ICHUCNANG, IFILE {
 
         System.out.println("\n=== HOP DONG CUA NHAN SU: " + nhanSu.getHoTen() + " ===");
         if (hopDong != null) {
-            hopDong.hienThiThongTin();
+            System.out.printf("%-5s %-12s %-12s %-25s %-15s %-35s %-15s %-15s\n",
+                    "STT", "Ma HD", "Ma NS", "Ho Ten", "Loai NS", "Loai HD", "Ngay BD", "Ngay KT");
+            System.out.println(
+                    "---------------------------------------------------------------------------------------------------------------------------------------");
+            System.out.printf("%-5d %-12s %-12s %-25s %-15s %-35s %-15s %-15s\n",
+                    1,
+                    hopDong.getMaHopDong(),
+                    nhanSu.getMaNhanSu(),
+                    truncate(nhanSu.getHoTen(), 25),
+                    nhanSu.getLoaiNhanSu(),
+                    truncate(hopDong.getLoaiHopDong(), 35),
+                    hopDong.getNgayBatDau(),
+                    hopDong.getNgayKetThuc());
+            System.out.println(
+                    "---------------------------------------------------------------------------------------------------------------------------------------");
         } else {
             System.out.println("Nhan su nay chua co hop dong!");
         }
@@ -1291,7 +1386,21 @@ public class QUANLYNHANSU implements ICHUCNANG, IFILE {
 
         System.out.println("\n=== SUA HOP DONG CUA NHAN SU: " + nhanSu.getHoTen() + " ===");
         System.out.println("Thong tin hien tai:");
-        hopDong.hienThiThongTin();
+        System.out.printf("%-5s %-12s %-12s %-25s %-15s %-35s %-15s %-15s\n",
+                "STT", "Ma HD", "Ma NS", "Ho Ten", "Loai NS", "Loai HD", "Ngay BD", "Ngay KT");
+        System.out.println(
+                "---------------------------------------------------------------------------------------------------------------------------------------");
+        System.out.printf("%-5d %-12s %-12s %-25s %-15s %-35s %-15s %-15s\n",
+                1,
+                hopDong.getMaHopDong(),
+                nhanSu.getMaNhanSu(),
+                truncate(nhanSu.getHoTen(), 25),
+                nhanSu.getLoaiNhanSu(),
+                truncate(hopDong.getLoaiHopDong(), 35),
+                hopDong.getNgayBatDau(),
+                hopDong.getNgayKetThuc());
+        System.out.println(
+                "---------------------------------------------------------------------------------------------------------------------------------------");
 
         System.out.println("\nNhap thong tin moi (Enter de giu nguyen):");
 
@@ -1395,7 +1504,21 @@ public class QUANLYNHANSU implements ICHUCNANG, IFILE {
         }
 
         System.out.println("\n=== XOA HOP DONG CUA NHAN SU: " + nhanSu.getHoTen() + " ===");
-        hopDong.hienThiThongTin();
+        System.out.printf("%-5s %-12s %-12s %-25s %-15s %-35s %-15s %-15s\n",
+                "STT", "Ma HD", "Ma NS", "Ho Ten", "Loai NS", "Loai HD", "Ngay BD", "Ngay KT");
+        System.out.println(
+                "---------------------------------------------------------------------------------------------------------------------------------------");
+        System.out.printf("%-5d %-12s %-12s %-25s %-15s %-35s %-15s %-15s\n",
+                1,
+                hopDong.getMaHopDong(),
+                nhanSu.getMaNhanSu(),
+                truncate(nhanSu.getHoTen(), 25),
+                nhanSu.getLoaiNhanSu(),
+                truncate(hopDong.getLoaiHopDong(), 35),
+                hopDong.getNgayBatDau(),
+                hopDong.getNgayKetThuc());
+        System.out.println(
+                "---------------------------------------------------------------------------------------------------------------------------------------");
 
         System.out.print("\nBan co chac chan muon xoa hop dong nay? (Y/N): ");
         String xacNhan = sc.nextLine();
@@ -1466,7 +1589,21 @@ public class QUANLYNHANSU implements ICHUCNANG, IFILE {
             }
 
             if (hopDong != null && hopDong.getMaHopDong().equalsIgnoreCase(maHopDong)) {
-                hopDong.hienThiThongTin();
+                System.out.printf("%-5s %-12s %-12s %-25s %-15s %-35s %-15s %-15s\n",
+                        "STT", "Ma HD", "Ma NS", "Ho Ten", "Loai NS", "Loai HD", "Ngay BD", "Ngay KT");
+                System.out.println(
+                        "---------------------------------------------------------------------------------------------------------------------------------------");
+                System.out.printf("%-5d %-12s %-12s %-25s %-15s %-35s %-15s %-15s\n",
+                        1,
+                        hopDong.getMaHopDong(),
+                        ns.getMaNhanSu(),
+                        truncate(ns.getHoTen(), 25),
+                        ns.getLoaiNhanSu(),
+                        truncate(hopDong.getLoaiHopDong(), 35),
+                        hopDong.getNgayBatDau(),
+                        hopDong.getNgayKetThuc());
+                System.out.println(
+                        "---------------------------------------------------------------------------------------------------------------------------------------");
                 timThay = true;
                 break;
             }
@@ -1569,9 +1706,9 @@ public class QUANLYNHANSU implements ICHUCNANG, IFILE {
             if (hopDong != null) {
                 tongHopDong++;
                 String loai = hopDong.getLoaiHopDong();
-                if (loai.contains("fulltime")) {
+                if (loai.contains("Fulltime")) {
                     hdFulltime++;
-                } else if (loai.contains("parttime")) {
+                } else if (loai.contains("Parttime")) {
                     hdParttime++;
                 }
             }
@@ -1745,7 +1882,22 @@ public class QUANLYNHANSU implements ICHUCNANG, IFILE {
 
         System.out.println("\n=== SUA THONG TIN DU AN ===");
         System.out.println("Thong tin hien tai:");
-        duAn.hienThiThongTin();
+        System.out.printf("%-5s %-12s %-30s %-12s %-20s %-15s %-15s\n",
+                "STT", "Ma DA", "Ten Du An", "Ma NS", "Nhan Su", "Ngay BD", "Ngay KT");
+        System.out.println(
+                "--------------------------------------------------------------------------------------------------------------------");
+        String maNS = duAn.getNhanSu() != null ? duAn.getNhanSu().getMaNhanSu() : "Chua co";
+        String tenNS = duAn.getNhanSu() != null ? duAn.getNhanSu().getHoTen() : "Chua co";
+        System.out.printf("%-5d %-12s %-30s %-12s %-20s %-15s %-15s\n",
+                1,
+                duAn.getMaDuAn(),
+                truncate(duAn.getTenDuAn(), 30),
+                maNS,
+                truncate(tenNS, 20),
+                duAn.getNgayBatDau(),
+                duAn.getNgayKetThuc());
+        System.out.println(
+                "--------------------------------------------------------------------------------------------------------------------");
 
         System.out.println("\nNhap thong tin moi (Enter de giu nguyen):");
 
@@ -1824,7 +1976,23 @@ public class QUANLYNHANSU implements ICHUCNANG, IFILE {
         }
 
         System.out.println("\n=== XOA DU AN ===");
-        danhSachDuAn[viTri].hienThiThongTin();
+        DUAN da = danhSachDuAn[viTri];
+        System.out.printf("%-5s %-12s %-30s %-12s %-20s %-15s %-15s\n",
+                "STT", "Ma DA", "Ten Du An", "Ma NS", "Nhan Su", "Ngay BD", "Ngay KT");
+        System.out.println(
+                "--------------------------------------------------------------------------------------------------------------------");
+        String maNS = da.getNhanSu() != null ? da.getNhanSu().getMaNhanSu() : "Chua co";
+        String tenNS = da.getNhanSu() != null ? da.getNhanSu().getHoTen() : "Chua co";
+        System.out.printf("%-5d %-12s %-30s %-12s %-20s %-15s %-15s\n",
+                1,
+                da.getMaDuAn(),
+                truncate(da.getTenDuAn(), 30),
+                maNS,
+                truncate(tenNS, 20),
+                da.getNgayBatDau(),
+                da.getNgayKetThuc());
+        System.out.println(
+                "--------------------------------------------------------------------------------------------------------------------");
 
         System.out.print("\nBan co chac chan muon xoa du an nay? (Y/N): ");
         String xacNhan = sc.nextLine();
@@ -1879,8 +2047,24 @@ public class QUANLYNHANSU implements ICHUCNANG, IFILE {
 
         for (int i = 0; i < soLuongDuAn; i++) {
             if (danhSachDuAn[i].getMaDuAn().equalsIgnoreCase(maDuAn)) {
+                DUAN da = danhSachDuAn[i];
                 System.out.println("\n=== THONG TIN DU AN ===");
-                danhSachDuAn[i].hienThiThongTin();
+                System.out.printf("%-5s %-12s %-30s %-12s %-20s %-15s %-15s\n",
+                        "STT", "Ma DA", "Ten Du An", "Ma NS", "Nhan Su", "Ngay BD", "Ngay KT");
+                System.out.println(
+                        "--------------------------------------------------------------------------------------------------------------------");
+                String maNS = da.getNhanSu() != null ? da.getNhanSu().getMaNhanSu() : "Chua co";
+                String tenNS = da.getNhanSu() != null ? da.getNhanSu().getHoTen() : "Chua co";
+                System.out.printf("%-5d %-12s %-30s %-12s %-20s %-15s %-15s\n",
+                        1,
+                        da.getMaDuAn(),
+                        truncate(da.getTenDuAn(), 30),
+                        maNS,
+                        truncate(tenNS, 20),
+                        da.getNgayBatDau(),
+                        da.getNgayKetThuc());
+                System.out.println(
+                        "--------------------------------------------------------------------------------------------------------------------");
                 return;
             }
         }
