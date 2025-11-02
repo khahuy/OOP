@@ -215,33 +215,70 @@ public class QUANLYNHANSU implements ICHUCNANG, IFILE {
 
         NHANSU nhanSu = null;
 
-        try {
-            switch (loai) {
-                case 1:
+        switch (loai) {
+            case 1:
+                double soGioLamThem;
+                do {
                     System.out.print("So gio lam them: ");
-                    double soGioLamThem = Double.parseDouble(sc.nextLine());
+                    try {
+                        soGioLamThem = Double.parseDouble(sc.nextLine());
+                        if (soGioLamThem < 0) {
+                            System.out.println("Loi: So gio lam them khong duoc am!");
+                        } else {
+                            break;
+                        }
+                    } catch (NumberFormatException e) {
+                        System.out.println("Loi: Vui long nhap so hop le!");
+                        soGioLamThem = -1;
+                    }
+                } while (true);
+
+                double donGiaGioLamThem;
+                do {
                     System.out.print("Don gia gio lam them: ");
-                    double donGiaGioLamThem = Double.parseDouble(sc.nextLine());
-                    nhanSu = new NHANVIENKYTHUAT(maNhanSu, hoTen, gioiTinh, diaChi, soDienThoai, email, luongCoBan,
-                            heSoLuong, soGioLamThem, donGiaGioLamThem);
-                    break;
-                case 2:
-                    nhanSu = new NHANVIENHANHCHINH(maNhanSu, hoTen, gioiTinh, diaChi, soDienThoai, email, luongCoBan,
-                            heSoLuong);
-                    break;
-                case 3:
+                    try {
+                        donGiaGioLamThem = Double.parseDouble(sc.nextLine());
+                        if (donGiaGioLamThem < 0) {
+                            System.out.println("Loi: Don gia khong duoc am!");
+                        } else {
+                            break;
+                        }
+                    } catch (NumberFormatException e) {
+                        System.out.println("Loi: Vui long nhap so hop le!");
+                        donGiaGioLamThem = -1;
+                    }
+                } while (true);
+
+                nhanSu = new NHANVIENKYTHUAT(maNhanSu, hoTen, gioiTinh, diaChi, soDienThoai, email, luongCoBan,
+                        heSoLuong, soGioLamThem, donGiaGioLamThem);
+                break;
+            case 2:
+                nhanSu = new NHANVIENHANHCHINH(maNhanSu, hoTen, gioiTinh, diaChi, soDienThoai, email, luongCoBan,
+                        heSoLuong);
+                break;
+            case 3:
+                double phuCap;
+                do {
                     System.out.print("Phu cap: ");
-                    double phuCap = Double.parseDouble(sc.nextLine());
-                    nhanSu = new NHANVIENQUANLY(maNhanSu, hoTen, gioiTinh, diaChi, soDienThoai, email, luongCoBan,
-                            heSoLuong, phuCap);
-                    break;
-                default:
-                    System.out.println("Lua chon khong hop le!");
-                    return;
-            }
-        } catch (NumberFormatException e) {
-            System.out.println("Loi: Gia tri nhap vao khong hop le!");
-            return;
+                    try {
+                        phuCap = Double.parseDouble(sc.nextLine());
+                        if (phuCap < 0) {
+                            System.out.println("Loi: Phu cap khong duoc am!");
+                        } else {
+                            break;
+                        }
+                    } catch (NumberFormatException e) {
+                        System.out.println("Loi: Vui long nhap so hop le!");
+                        phuCap = -1;
+                    }
+                } while (true);
+
+                nhanSu = new NHANVIENQUANLY(maNhanSu, hoTen, gioiTinh, diaChi, soDienThoai, email, luongCoBan,
+                        heSoLuong, phuCap);
+                break;
+            default:
+                System.out.println("Lua chon khong hop le!");
+                return;
         }
 
         // set phong ban cho nhan su (bắt buộc vì đã chọn phòng ban)
@@ -846,11 +883,17 @@ public class QUANLYNHANSU implements ICHUCNANG, IFILE {
 
         // Nhập thông tin thưởng
         System.out.println("\n--- THONG TIN THUONG ---");
-        System.out.print("Co thuong khong? (Y/N): ");
-        String coThuong = sc.nextLine();
+        String coThuong;
+        do {
+            System.out.print("Co thuong khong? (Y/N): ");
+            coThuong = sc.nextLine().trim().toUpperCase();
+            if (!coThuong.equals("Y") && !coThuong.equals("N")) {
+                System.out.println("Loi: Vui long chi nhap Y hoac N!");
+            }
+        } while (!coThuong.equals("Y") && !coThuong.equals("N"));
 
         THUONG thuong = null;
-        if (coThuong.equalsIgnoreCase("Y")) {
+        if (coThuong.equals("Y")) {
             System.out.print("Loai thuong: ");
             String loaiThuong = sc.nextLine();
 
@@ -961,23 +1004,32 @@ public class QUANLYNHANSU implements ICHUCNANG, IFILE {
 
         System.out.println("\n=== BANG LUONG CUA NHAN SU: " + nhanSu.getHoTen() + " ===");
         boolean timThay = false;
+        int stt = 0;
+
         System.out.printf("%-5s %-12s %-12s %-20s %-15s %-12s %-12s %-12s %-15s\n",
                 "STT", "Ma BL", "Ma NS", "Ho Ten", "Loai NS", "Ngay Lam", "Thuong", "Bao Hiem", "Luong Thuc Nhan");
         System.out.println(
                 "-------------------------------------------------------------------------------------------------------------------------");
+
         for (int i = 0; i < soLuongBangLuong; i++) {
             BANGLUONG bl = danhSachBangLuong[i];
-            System.out.printf("%-5d %-12s %-12s %-20s %-15s %-12d %-12.2f %-12.2f %-15.2f\n",
-                    (i + 1),
-                    bl.getMaBangLuong(),
-                    bl.getNhanSu().getMaNhanSu(),
-                    bl.getNhanSu().getHoTen(),
-                    bl.getNhanSu().getLoaiNhanSu(),
-                    bl.getChamCong().getSoNgayLamViec(),
-                    bl.getThuong(),
-                    bl.getBaoHiem(),
-                    bl.getLuongThucNhan());
+            // Chỉ hiển thị bảng lương của nhân sự được tìm kiếm
+            if (bl.getNhanSu().getMaNhanSu().equalsIgnoreCase(maNhanSu)) {
+                stt++;
+                timThay = true;
+                System.out.printf("%-5d %-12s %-12s %-20s %-15s %-12d %-12.2f %-12.2f %-15.2f\n",
+                        stt,
+                        bl.getMaBangLuong(),
+                        bl.getNhanSu().getMaNhanSu(),
+                        bl.getNhanSu().getHoTen(),
+                        bl.getNhanSu().getLoaiNhanSu(),
+                        bl.getChamCong().getSoNgayLamViec(),
+                        bl.getThuong(),
+                        bl.getBaoHiem(),
+                        bl.getLuongThucNhan());
+            }
         }
+
         System.out.println(
                 "-------------------------------------------------------------------------------------------------------------------------");
 
@@ -1204,8 +1256,8 @@ public class QUANLYNHANSU implements ICHUCNANG, IFILE {
         String maHopDong = sc.nextLine();
 
         System.out.println("Chon loai hop dong:");
-        System.out.println("1. Fulltime (Toan thoi gian)");
-        System.out.println("2. Partime (Ban thoi gian)");
+        System.out.println("1. Fulltime");
+        System.out.println("2. Partime");
         System.out.print("Lua chon (1-2): ");
 
         int loaiHD;
@@ -1411,8 +1463,8 @@ public class QUANLYNHANSU implements ICHUCNANG, IFILE {
         }
 
         System.out.println("Chon loai hop dong moi:");
-        System.out.println("1. Fulltime (Toan thoi gian)");
-        System.out.println("2. Partime (Ban thoi gian)");
+        System.out.println("1. Fulltime");
+        System.out.println("2. Partime");
         System.out.print("Lua chon (1-2, Enter de giu nguyen): ");
         String loaiHDStr = sc.nextLine();
 
@@ -1616,8 +1668,8 @@ public class QUANLYNHANSU implements ICHUCNANG, IFILE {
 
     private void timKiemHopDongTheoLoai() {
         System.out.println("Chon loai hop dong:");
-        System.out.println("1. Fulltime (Toan thoi gian)");
-        System.out.println("2. Partime (Ban thoi gian)");
+        System.out.println("1. Fulltime");
+        System.out.println("2. Partime");
         System.out.print("Lua chon: ");
 
         int loaiHD;
@@ -1626,10 +1678,10 @@ public class QUANLYNHANSU implements ICHUCNANG, IFILE {
             loaiHD = Integer.parseInt(sc.nextLine());
             switch (loaiHD) {
                 case 1:
-                    loaiHopDong = "Fulltime (Toan thoi gian)";
+                    loaiHopDong = "Fulltime";
                     break;
                 case 2:
-                    loaiHopDong = "Partime (Ban thoi gian)";
+                    loaiHopDong = "Partime";
                     break;
                 default:
                     System.out.println("Lua chon khong hop le!");
